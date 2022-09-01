@@ -22,7 +22,7 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors {
                         MediaPickerUtils.PrependLinkToDescription(
                             field,
                             "See the documentation &rarr;",
-                            "https://packages.skybrud.dk/skybrud.imagepicker/docs/v3.0/image/configuration/value-type/"
+                            "https://packages.limbo.works/ee815b6f"
                         );
                         break;
 

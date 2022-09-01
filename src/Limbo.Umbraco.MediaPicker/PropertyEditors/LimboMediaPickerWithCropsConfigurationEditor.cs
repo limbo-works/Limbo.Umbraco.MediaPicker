@@ -27,7 +27,7 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors {
                         MediaPickerUtils.PrependLinkToDescription(
                             field,
                             "See the documentation &rarr;",
-                            "https://packages.skybrud.dk/skybrud.imagepicker/docs/v3.0/imagewithcrops/configuration/type-converter/"
+                            "https://packages.limbo.works/76bfafbd"
                         );
                         break;
 
@@ -35,7 +35,7 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors {
                         MediaPickerUtils.PrependLinkToDescription(
                             field,
                             "See the documentation &rarr;",
-                            "https://packages.skybrud.dk/skybrud.imagepicker/docs/v3.0/imagewithcrops/configuration/value-type/"
+                            "https://packages.limbo.works/8d586746"
                         );
                         break;
 
