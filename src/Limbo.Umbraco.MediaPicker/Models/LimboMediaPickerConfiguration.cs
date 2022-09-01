@@ -17,7 +17,7 @@ namespace Limbo.Umbraco.MediaPicker.Models {
         /// <summary>
         /// Gets the name of the value type. This will be used for resolving the <see cref="ValueType"/> parameter.
         /// </summary>
-        [ConfigurationField("model",
+        [ConfigurationField("valueType",
             "Value type",
             $"/App_Plugins/{MediaPickerPackage.Alias}/Views/TypePicker.html?type=ValueType&editor=v2&v={{version}}",
             Description = "Select the .NET value type that should be used for representing the selected image(s).")]

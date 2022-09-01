@@ -18,7 +18,29 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors {
                 .Config = new Dictionary<string, object> { { "itemType", "media" } };
 
             foreach (var field in Fields) {
+                
                 if (field.View is not null) field.View = field.View.Replace("{version}", MediaPickerPackage.InformationalVersion);
+
+                switch (field.Key) {
+
+                    case "typeConverter":
+                        MediaPickerUtils.PrependLinkToDescription(
+                            field,
+                            "See the documentation &rarr;",
+                            "https://packages.skybrud.dk/skybrud.imagepicker/docs/v3.0/imagewithcrops/configuration/type-converter/"
+                        );
+                        break;
+
+                    case "valueType":
+                        MediaPickerUtils.PrependLinkToDescription(
+                            field,
+                            "See the documentation &rarr;",
+                            "https://packages.skybrud.dk/skybrud.imagepicker/docs/v3.0/imagewithcrops/configuration/value-type/"
+                        );
+                        break;
+
+                }
+
             }
 
         }

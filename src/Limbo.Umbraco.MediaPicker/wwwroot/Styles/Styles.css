@@ -5,3 +5,10 @@
 .limbo-umbraco-mediapicker.type-picker-overlay .umb-node-preview:hover {
   background: #e9e9eb;
 }
+.btn.btn-xs.limbo-media-picker-button {
+  margin-bottom: 5px;
+  padding: 3px 8px;
+  font-size: 11px;
+  line-height: 19px;
+  white-space: nowrap;
+}

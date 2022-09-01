@@ -11,9 +11,25 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors {
     public class LimboMediaPickerConfigurationEditor : ConfigurationEditor<LimboMediaPickerConfiguration> {
 
         public LimboMediaPickerConfigurationEditor(IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(ioHelper, editorConfigurationParser) {
+
             foreach (var field in Fields) {
+
                 if (field.View is not null) field.View = field.View.Replace("{version}", MediaPickerPackage.InformationalVersion);
+
+                switch (field.Key) {
+
+                    case "valueType":
+                        MediaPickerUtils.PrependLinkToDescription(
+                            field,
+                            "See the documentation &rarr;",
+                            "https://packages.skybrud.dk/skybrud.imagepicker/docs/v3.0/image/configuration/value-type/"
+                        );
+                        break;
+
+                }
+
             }
+
         }
 
         public override IDictionary<string, object> ToValueEditor(object? configuration) {
