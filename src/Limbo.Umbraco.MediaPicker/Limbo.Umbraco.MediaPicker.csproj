@@ -23,10 +23,10 @@
     <PackageId>Limbo.Umbraco.MediaPicker</PackageId>
     <PackageTags>Limbo, Media, Image, Skybrud, Umbraco</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/limbo-works/Limbo.Umbraco.Media</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/limbo-works/Limbo.Umbraco.MediaPicker</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/limbo-works/Limbo.Umbraco.Media</RepositoryUrl>
+    <RepositoryUrl>https://github.com/limbo-works/Limbo.Umbraco.MediaPicker</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
