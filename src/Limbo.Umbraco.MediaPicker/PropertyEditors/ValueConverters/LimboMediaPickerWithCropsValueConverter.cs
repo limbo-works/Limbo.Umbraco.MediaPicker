@@ -7,6 +7,7 @@ using Limbo.Umbraco.MediaPicker.Converters;
 using Limbo.Umbraco.MediaPicker.Json;
 using Limbo.Umbraco.MediaPicker.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Collections.Extensions;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Strings.Extensions;
@@ -229,7 +230,11 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors.ValueConverters {
 
         private bool TryGetConverter(LimboMediaPickerWithCropsConfiguration config, out IImageWithCropsTypeConverter? converter) {
             converter = null;
-            string? key = config.TypeConverter?.GetString("key");
+            string? key = config.TypeConverter?.Type switch {
+                JTokenType.Object => ((JObject) config.TypeConverter).GetString("key"),
+                JTokenType.String => config.TypeConverter.ToString(),
+                _ => null
+            };
             return !string.IsNullOrWhiteSpace(key) && _converterCollection.TryGet(key, out converter);
         }
 

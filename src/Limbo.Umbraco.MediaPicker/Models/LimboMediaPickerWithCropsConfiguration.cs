@@ -16,13 +16,13 @@ namespace Limbo.Umbraco.MediaPicker.Models {
         #region Properties
 
         /// <summary>
-        /// Gets a reference to a <see cref="JObject"/> with information about the selected type converter.
+        /// Gets a reference to a <see cref="JToken"/> with information about the selected type converter.
         /// </summary>
         [ConfigurationField("typeConverter",
             "Type converter",
             $"/App_Plugins/{MediaPickerPackage.Alias}/Views/TypePicker.html?type=TypeConverter&editor=v3&v={{version}}",
             Description = "Select a type converter, which will be used for converting the selected items.")]
-        public JObject? TypeConverter { get; set; }
+        public JToken? TypeConverter { get; set; }
 
         /// <summary>
         /// Gets the name of the value type. This will be used for resolving the <see cref="ValueType"/> parameter.
