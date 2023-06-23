@@ -1,6 +1,6 @@
 # Limbo Media Picker [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.MediaPicker.svg)](https://www.nuget.org/packages/Limbo.Umbraco.MediaPicker) [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.MediaPicker.svg)](https://www.nuget.org/packages/Limbo.Umbraco.MediaPicker) [![Our Umbraco](https://img.shields.io/badge/our-umbraco-%233544B1)](https://our.umbraco.com/packages/backoffice-extensions/limbo-media-picker/)
 
-**Limbo.Umbraco.ImagePicker** is a package for Umbraco 10 with property editors extending Umbraco's default media pickers.
+**Limbo.Umbraco.ImagePicker** is a package for Umbraco 10+ with property editors extending Umbraco's default media pickers.
 
 
 
@@ -8,16 +8,16 @@
 
 ## Installation
 
-The package targets Umbraco 10 and is available via [NuGet][NuGetPackage]. To install the package, you can use either .NET CLI:
+The package targets Umbraco 10 and 11 and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.MediaPicker --version 1.0.0-alpha001
+dotnet add package Limbo.Umbraco.MediaPicker --version 1.0.0
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.MediaPicker -Version 1.0.0-alpha001
+Install-Package Limbo.Umbraco.MediaPicker -Version 1.0.0
 ```
 
 For older versions of Umbraco, see our older [**Skybrud.ImagePicker**](https://github.com/skybrud/Skybrud.ImagePicker) package.
