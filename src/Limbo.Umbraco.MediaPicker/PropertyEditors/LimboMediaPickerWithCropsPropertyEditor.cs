@@ -58,7 +58,7 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors {
         }
 
         protected override IConfigurationEditor CreateConfigurationEditor() => new LimboMediaPickerWithCropsConfigurationEditor(_iOHelper, _editorConfigurationParser);
-        
+
         public override IDataValueEditor GetValueEditor(object? configuration) {
 
             IDataValueEditor editor = base.GetValueEditor(configuration);

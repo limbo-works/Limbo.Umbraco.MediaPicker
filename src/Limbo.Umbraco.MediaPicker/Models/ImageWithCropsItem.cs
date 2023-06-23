@@ -41,7 +41,7 @@ namespace Limbo.Umbraco.MediaPicker.Models {
         /// Gets a reference to the local crops for this media.
         /// </summary>
         [JsonProperty("localCrops", Order = -200)]
-        public ImageCropperValue LocalCrops => Media.LocalCrops; 
+        public ImageCropperValue LocalCrops => Media.LocalCrops;
 
         #endregion
 
@@ -56,7 +56,7 @@ namespace Limbo.Umbraco.MediaPicker.Models {
 
             int width = media.Value<int>(Constants.Conventions.Media.Width);
             int height = media.Value<int>(Constants.Conventions.Media.Height);
-            
+
             Width = width;
             Height = height;
             CropUrl = media.GetCropUrl(width, height, preferFocalPoint: config.PreferFocalPoint, imageCropMode: config.CropMode);

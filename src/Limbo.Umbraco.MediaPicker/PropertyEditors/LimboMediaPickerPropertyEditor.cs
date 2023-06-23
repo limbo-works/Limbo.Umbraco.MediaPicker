@@ -65,7 +65,7 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors {
 
             IDataValueEditor editor = base.GetValueEditor(configuration);
             if (editor is not DataValueEditor dve) return editor;
-            
+
             if (dve.View is not null) {
                 dve.View = dve.View.Replace("{version}", MediaPickerPackage.SemVersion.ToString());
             }

@@ -18,7 +18,7 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors {
                 .Config = new Dictionary<string, object> { { "itemType", "media" } };
 
             foreach (var field in Fields) {
-                
+
                 if (field.View is not null) field.View = field.View.Replace("{version}", MediaPickerPackage.InformationalVersion);
 
                 switch (field.Key) {
