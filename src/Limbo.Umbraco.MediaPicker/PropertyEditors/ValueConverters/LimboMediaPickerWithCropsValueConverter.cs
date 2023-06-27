@@ -178,8 +178,11 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors.ValueConverters {
             if (propertyType.DataType.Configuration is not LimboMediaPickerWithCropsConfiguration config) return base.GetPropertyValueType(propertyType);
 
             // Look up the selected converter and get it's desired type
-            if (TryGetConverter(config, out IImageWithCropsTypeConverter? converter)) return converter!.GetType(propertyType, config);
-            
+            if (TryGetConverter(config, out IImageWithCropsTypeConverter? converter)) {
+                Type type = converter!.GetType(propertyType, config);
+                return config.Multiple ? typeof(IReadOnlyList<>).MakeGenericType(type) : type;
+            }
+
             Type modelType = GetModelType(config);
 
             // If the data type allows multiple items, we should return IEnumerable<T> instead of T
