@@ -121,7 +121,7 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors.ValueConverters {
 
             Type valueType = config.ValueType ?? (config.OnlyImages ? typeof(ImageItem) : typeof(MediaItem));
 
-            return config.Multiple ? typeof(IEnumerable<>).MakeGenericType(valueType) : valueType;
+            return config.Multiple ? typeof(IReadOnlyList<>).MakeGenericType(valueType) : valueType;
 
         }
 

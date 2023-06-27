@@ -186,12 +186,12 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors.ValueConverters {
             Type modelType = GetModelType(config);
 
             // If the data type allows multiple items, we should return IEnumerable<T> instead of T
-            return config.Multiple ? typeof(IEnumerable<>).MakeGenericType(modelType) : modelType;
+            return config.Multiple ? typeof(IReadOnlyList<>).MakeGenericType(modelType) : modelType;
 
         }
 
         private Type GetModelType(LimboMediaPickerWithCropsConfiguration config) {
-            
+
             // If the data type isn't configured with a type converter, we look for the value type option instead
             Type? modelType = config.ValueType;
 
