@@ -1,4 +1,6 @@
-# Limbo Media Picker [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.MediaPicker.svg)](https://www.nuget.org/packages/Limbo.Umbraco.MediaPicker) [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.MediaPicker.svg)](https://www.nuget.org/packages/Limbo.Umbraco.MediaPicker) [![Our Umbraco](https://img.shields.io/badge/our-umbraco-%233544B1)](https://our.umbraco.com/packages/backoffice-extensions/limbo-media-picker/)
+# Limbo Media Picker
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.MediaPicker.svg)](https://www.nuget.org/packages/Limbo.Umbraco.MediaPicker) [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.MediaPicker.svg)](https://www.nuget.org/packages/Limbo.Umbraco.MediaPicker) [![Our Umbraco](https://img.shields.io/badge/our-umbraco-%233544B1)](https://our.umbraco.com/packages/backoffice-extensions/limbo-media-picker/)
 
 **Limbo.Umbraco.ImagePicker** is a package for Umbraco 10+ with property editors extending Umbraco's default media pickers.
 
