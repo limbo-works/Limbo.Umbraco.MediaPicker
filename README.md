@@ -4,22 +4,39 @@
 
 **Limbo.Umbraco.MediaPicker** is a package for Umbraco 10+ with property editors extending Umbraco's default media pickers.
 
+<table>
+  <tr>
+    <td><strong>License:</strong></td>
+    <td><a href="./LICENSE.md"><strong>MIT License</strong></a></td>
+  </tr>
+  <tr>
+    <td><strong>Umbraco:</strong></td>
+    <td>Umbraco 10, 11 and 12</td>
+  </tr>
+  <tr>
+    <td><strong>Target Framework:</strong></td>
+    <td>.NET 6</td>
+  </tr>
+</table>
+
+
+
 
 
 <br /><br />
 
 ## Installation
 
-The package targets Umbraco 10 and 11 and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
+The package targets Umbraco 10+ and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.MediaPicker --version 1.0.1
+dotnet add package Limbo.Umbraco.MediaPicker --version 1.0.2
 ```
 
-or the older NuGet Package Manager:
+or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.MediaPicker -Version 1.0.1
+Install-Package Limbo.Umbraco.MediaPicker -Version 1.0.2
 ```
 
 For older versions of Umbraco, see our older [**Skybrud.ImagePicker**](https://github.com/skybrud/Skybrud.ImagePicker) package.
