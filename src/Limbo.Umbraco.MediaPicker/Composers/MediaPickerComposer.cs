@@ -4,33 +4,31 @@ using Limbo.Umbraco.MediaPicker.Manifests;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
 
-namespace Limbo.Umbraco.MediaPicker.Composers {
+namespace Limbo.Umbraco.MediaPicker.Composers;
+
+/// <summary>
+/// Composer to run our reference factories when the site starts up.
+/// </summary>
+public class ImagePickerComposer : IComposer {
 
     /// <summary>
-    /// Composer to run our reference factories when the site starts up.
+    /// Append reference factories on startup.
     /// </summary>
-    public class ImagePickerComposer : IComposer {
+    /// <param name="builder">Umbraco's own injected builder that runs on startup.</param>
+    public void Compose(IUmbracoBuilder builder) {
 
-        /// <summary>
-        /// Append reference factories on startup.
-        /// </summary>
-        /// <param name="builder">Umbraco's own injected builder that runs on startup.</param>
-        public void Compose(IUmbracoBuilder builder) {
+        builder
+            .DataValueReferenceFactories()
+            .Append<ImageReferenceFactory>()
+            .Append<ImageWithCropsReferenceFactory>();
 
-            builder
-                .DataValueReferenceFactories()
-                .Append<ImageReferenceFactory>()
-                .Append<ImageWithCropsReferenceFactory>();
+        builder
+            .WithCollectionBuilder<ImageWithCropsTypeConverterCollectionBuilder>()
+            .Add(() => builder.TypeLoader.GetTypes<IImageWithCropsTypeConverter>());
 
-            builder
-                .WithCollectionBuilder<ImageWithCropsTypeConverterCollectionBuilder>()
-                .Add(() => builder.TypeLoader.GetTypes<IImageWithCropsTypeConverter>());
-
-            builder
-                .ManifestFilters()
-                .Append<MediaPickerManifestFilter>();
-
-        }
+        builder
+            .ManifestFilters()
+            .Append<MediaPickerManifestFilter>();
 
     }
 

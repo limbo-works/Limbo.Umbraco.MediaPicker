@@ -2,47 +2,45 @@
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Extensions;
 
-namespace Limbo.Umbraco.MediaPicker.Models {
+namespace Limbo.Umbraco.MediaPicker.Models;
+
+/// <summary>
+/// Class representing a media item.
+/// </summary>
+public class MediaItem {
+
+    #region Properties
 
     /// <summary>
-    /// Class representing a media item.
+    /// Gets the IPublishedContent reference to the media node
     /// </summary>
-    public class MediaItem {
+    [JsonIgnore]
+    public IPublishedContent Media { get; }
 
-        #region Properties
+    /// <summary>
+    /// The media int id
+    /// </summary>
+    [JsonProperty("id", Order = -500)]
+    public virtual int Id => Media.Id;
 
-        /// <summary>
-        /// Gets the IPublishedContent reference to the media node
-        /// </summary>
-        [JsonIgnore]
-        public IPublishedContent Media { get; }
+    /// <summary>
+    /// The url for the media
+    /// </summary>
+    [JsonProperty("url", Order = -350)]
+    public virtual string Url => Media.Url();
 
-        /// <summary>
-        /// The media int id
-        /// </summary>
-        [JsonProperty("id", Order = -500)]
-        public virtual int Id => Media.Id;
+    #endregion
 
-        /// <summary>
-        /// The url for the media
-        /// </summary>
-        [JsonProperty("url", Order = -350)]
-        public virtual string Url => Media.Url();
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new image item.
-        /// </summary>
-        /// <param name="media">An instance of <see cref="IPublishedContent"/> representing the media.</param>.
-        public MediaItem(IPublishedContent media) {
-            Media = media;
-        }
-
-        #endregion
-
+    /// <summary>
+    /// Initializes a new image item.
+    /// </summary>
+    /// <param name="media">An instance of <see cref="IPublishedContent"/> representing the media.</param>.
+    public MediaItem(IPublishedContent media) {
+        Media = media;
     }
+
+    #endregion
 
 }

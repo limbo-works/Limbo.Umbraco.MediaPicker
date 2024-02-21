@@ -5,35 +5,33 @@ using Umbraco.Extensions;
 
 // ReSharper disable UnusedParameter.Local
 
-namespace Limbo.Umbraco.MediaPicker.Models {
+namespace Limbo.Umbraco.MediaPicker.Models;
+
+/// <summary>
+/// Class representing a file item.
+/// </summary>
+public class FileItem : MediaItem {
+
+    #region Properties
 
     /// <summary>
-    /// Class representing a file item.
+    /// Gets the file size (bytes) of the file.
     /// </summary>
-    public class FileItem : MediaItem {
+    [JsonProperty("bytes", Order = -450)]
+    public virtual int Bytes { get; }
+    #endregion
 
-        #region Properties
+    #region Constructors
 
-        /// <summary>
-        /// Gets the file size (bytes) of the file.
-        /// </summary>
-        [JsonProperty("bytes", Order = -450)]
-        public virtual int Bytes { get; }
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new file item.
-        /// </summary>
-        /// <param name="media">An instance of <see cref="IPublishedContent"/> representing the media.</param>.
-        /// <param name="config">The ImagePicker config</param>
-        public FileItem(IPublishedContent media, LimboMediaPickerConfiguration config) : base(media) {
-            Bytes = media.Value<int>(Constants.Conventions.Media.Bytes);
-        }
-
-        #endregion
-
+    /// <summary>
+    /// Initializes a new file item.
+    /// </summary>
+    /// <param name="media">An instance of <see cref="IPublishedContent"/> representing the media.</param>.
+    /// <param name="config">The ImagePicker config</param>
+    public FileItem(IPublishedContent media, LimboMediaPickerConfiguration config) : base(media) {
+        Bytes = media.Value<int>(Constants.Conventions.Media.Bytes);
     }
+
+    #endregion
 
 }

@@ -6,56 +6,54 @@ using Umbraco.Cms.Core.Services;
 
 #pragma warning disable CS1591
 
-namespace Limbo.Umbraco.MediaPicker.PropertyEditors {
+namespace Limbo.Umbraco.MediaPicker.PropertyEditors;
 
-    public class LimboMediaPickerWithCropsConfigurationEditor : ConfigurationEditor<LimboMediaPickerWithCropsConfiguration> {
+public class LimboMediaPickerWithCropsConfigurationEditor : ConfigurationEditor<LimboMediaPickerWithCropsConfiguration> {
 
-        public LimboMediaPickerWithCropsConfigurationEditor(IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(ioHelper, editorConfigurationParser) {
-            Field(nameof(MediaPicker3Configuration.StartNodeId))
-                .Config = new Dictionary<string, object> { { "idType", "udi" } };
+    public LimboMediaPickerWithCropsConfigurationEditor(IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(ioHelper, editorConfigurationParser) {
+        Field(nameof(MediaPicker3Configuration.StartNodeId))
+            .Config = new Dictionary<string, object> { { "idType", "udi" } };
 
-            Field(nameof(MediaPicker3Configuration.Filter))
-                .Config = new Dictionary<string, object> { { "itemType", "media" } };
+        Field(nameof(MediaPicker3Configuration.Filter))
+            .Config = new Dictionary<string, object> { { "itemType", "media" } };
 
-            foreach (var field in Fields) {
+        foreach (var field in Fields) {
 
-                if (field.View is not null) field.View = field.View.Replace("{version}", MediaPickerPackage.InformationalVersion);
+            if (field.View is not null) field.View = field.View.Replace("{version}", MediaPickerPackage.InformationalVersion);
 
-                switch (field.Key) {
+            switch (field.Key) {
 
-                    case "typeConverter":
-                        MediaPickerUtils.PrependLinkToDescription(
-                            field,
-                            "See the documentation &rarr;",
-                            "https://packages.limbo.works/76bfafbd"
-                        );
-                        break;
+                case "typeConverter":
+                    MediaPickerUtils.PrependLinkToDescription(
+                        field,
+                        "See the documentation &rarr;",
+                        "https://packages.limbo.works/76bfafbd"
+                    );
+                    break;
 
-                    case "valueType":
-                        MediaPickerUtils.PrependLinkToDescription(
-                            field,
-                            "See the documentation &rarr;",
-                            "https://packages.limbo.works/8d586746"
-                        );
-                        break;
-
-                }
+                case "valueType":
+                    MediaPickerUtils.PrependLinkToDescription(
+                        field,
+                        "See the documentation &rarr;",
+                        "https://packages.limbo.works/8d586746"
+                    );
+                    break;
 
             }
 
         }
 
-        public override IDictionary<string, object> ToValueEditor(object? configuration) {
+    }
 
-            var d = base.ToValueEditor(configuration);
+    public override IDictionary<string, object> ToValueEditor(object? configuration) {
 
-            d["idType"] = "udi";
-            d["disableFolderSelect"] = "true";
-            d["onlyImages"] = "true";
+        var d = base.ToValueEditor(configuration);
 
-            return d;
+        d["idType"] = "udi";
+        d["disableFolderSelect"] = "true";
+        d["onlyImages"] = "true";
 
-        }
+        return d;
 
     }
 

@@ -4,32 +4,30 @@ using Umbraco.Cms.Core.Composing;
 
 #pragma warning disable 1591
 
-namespace Limbo.Umbraco.MediaPicker.Converters {
+namespace Limbo.Umbraco.MediaPicker.Converters;
 
-    /// <summary>
-    /// Collection of <see cref="IImageWithCropsTypeConverter"/>.
-    /// </summary>
-    public sealed class ImageWithCropsTypeConverterCollection : BuilderCollectionBase<IImageWithCropsTypeConverter> {
+/// <summary>
+/// Collection of <see cref="IImageWithCropsTypeConverter"/>.
+/// </summary>
+public sealed class ImageWithCropsTypeConverterCollection : BuilderCollectionBase<IImageWithCropsTypeConverter> {
 
-        private readonly Dictionary<string, IImageWithCropsTypeConverter> _lookup;
+    private readonly Dictionary<string, IImageWithCropsTypeConverter> _lookup;
 
-        public ImageWithCropsTypeConverterCollection(Func<IEnumerable<IImageWithCropsTypeConverter>> items) : base(items) {
+    public ImageWithCropsTypeConverterCollection(Func<IEnumerable<IImageWithCropsTypeConverter>> items) : base(items) {
 
-            _lookup = new Dictionary<string, IImageWithCropsTypeConverter>(StringComparer.OrdinalIgnoreCase);
+        _lookup = new Dictionary<string, IImageWithCropsTypeConverter>(StringComparer.OrdinalIgnoreCase);
 
-            foreach (IImageWithCropsTypeConverter item in this) {
-                string? typeName = item.GetType().AssemblyQualifiedName;
-                if (typeName != null && _lookup.ContainsKey(typeName) == false) {
-                    _lookup.Add(typeName, item);
-                }
+        foreach (IImageWithCropsTypeConverter item in this) {
+            string? typeName = item.GetType().AssemblyQualifiedName;
+            if (typeName != null && _lookup.ContainsKey(typeName) == false) {
+                _lookup.Add(typeName, item);
             }
-
         }
 
-        public bool TryGet(string typeName, out IImageWithCropsTypeConverter? item) {
-            return _lookup.TryGetValue(typeName, out item);
-        }
+    }
 
+    public bool TryGet(string typeName, out IImageWithCropsTypeConverter? item) {
+        return _lookup.TryGetValue(typeName, out item);
     }
 
 }

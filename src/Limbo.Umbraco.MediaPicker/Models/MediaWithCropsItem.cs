@@ -2,47 +2,45 @@
 using Umbraco.Cms.Core.Models;
 using Umbraco.Extensions;
 
-namespace Limbo.Umbraco.MediaPicker.Models {
+namespace Limbo.Umbraco.MediaPicker.Models;
+
+/// <summary>
+/// Base class wrapping an instance of <see cref="MediaWithCrops"/>.
+/// </summary>
+public class MediaWithCropsItem {
+
+    #region Properties
 
     /// <summary>
-    /// Base class wrapping an instance of <see cref="MediaWithCrops"/>.
+    /// Gets a reference to the underlying <see cref="MediaWithCrops"/>.
     /// </summary>
-    public class MediaWithCropsItem {
+    [JsonIgnore]
+    public MediaWithCrops Media { get; }
 
-        #region Properties
+    /// <summary>
+    /// Gets the numeric ID of the underlying media.
+    /// </summary>
+    [JsonProperty("id", Order = -500)]
+    public virtual int Id => Media.Id;
 
-        /// <summary>
-        /// Gets a reference to the underlying <see cref="MediaWithCrops"/>.
-        /// </summary>
-        [JsonIgnore]
-        public MediaWithCrops Media { get; }
+    /// <summary>
+    /// The URL of the underlying media.
+    /// </summary>
+    [JsonProperty("url", Order = -350)]
+    public virtual string Url => Media.Url();
 
-        /// <summary>
-        /// Gets the numeric ID of the underlying media.
-        /// </summary>
-        [JsonProperty("id", Order = -500)]
-        public virtual int Id => Media.Id;
+    #endregion
 
-        /// <summary>
-        /// The URL of the underlying media.
-        /// </summary>
-        [JsonProperty("url", Order = -350)]
-        public virtual string Url => Media.Url();
+    #region Constructors
 
-        #endregion
-
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a nw instance based on the specified <paramref name="media"/>.
-        /// </summary>
-        /// <param name="media">The <see cref="MediaWithCrops"/> instance to wrap.</param>
-        public MediaWithCropsItem(MediaWithCrops media) {
-            Media = media;
-        }
-
-        #endregion
-
+    /// <summary>
+    /// Initializes a nw instance based on the specified <paramref name="media"/>.
+    /// </summary>
+    /// <param name="media">The <see cref="MediaWithCrops"/> instance to wrap.</param>
+    public MediaWithCropsItem(MediaWithCrops media) {
+        Media = media;
     }
+
+    #endregion
 
 }

@@ -1,11 +1,9 @@
 ﻿using Umbraco.Cms.Core.Composing;
 
-namespace Limbo.Umbraco.MediaPicker.Converters {
+namespace Limbo.Umbraco.MediaPicker.Converters;
 
-    internal sealed class ImageWithCropsTypeConverterCollectionBuilder : LazyCollectionBuilderBase<ImageWithCropsTypeConverterCollectionBuilder, ImageWithCropsTypeConverterCollection, IImageWithCropsTypeConverter> {
+internal sealed class ImageWithCropsTypeConverterCollectionBuilder : LazyCollectionBuilderBase<ImageWithCropsTypeConverterCollectionBuilder, ImageWithCropsTypeConverterCollection, IImageWithCropsTypeConverter> {
 
-        protected override ImageWithCropsTypeConverterCollectionBuilder This => this;
-
-    }
+    protected override ImageWithCropsTypeConverterCollectionBuilder This => this;
 
 }

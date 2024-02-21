@@ -10,35 +10,33 @@ using Umbraco.Extensions;
 
 #pragma warning disable CS1591
 
-namespace Limbo.Umbraco.MediaPicker.Factories {
+namespace Limbo.Umbraco.MediaPicker.Factories;
 
-    public class ImageWithCropsReferenceFactory : IDataValueReferenceFactory, IDataValueReference {
+public class ImageWithCropsReferenceFactory : IDataValueReferenceFactory, IDataValueReference {
 
-        private readonly IJsonSerializer _jsonSerializer;
+    private readonly IJsonSerializer _jsonSerializer;
 
-        public ImageWithCropsReferenceFactory(IJsonSerializer jsonSerializer) {
-            _jsonSerializer = jsonSerializer;
-        }
+    public ImageWithCropsReferenceFactory(IJsonSerializer jsonSerializer) {
+        _jsonSerializer = jsonSerializer;
+    }
 
-        /// <inheritdoc />
-        public IDataValueReference GetDataValueReference() => this;
+    /// <inheritdoc />
+    public IDataValueReference GetDataValueReference() => this;
 
-        /// <inheritdoc />
-        public bool IsForEditor(IDataEditor? dataEditor) {
-            return dataEditor != null && dataEditor.Alias.InvariantEquals(LimboMediaPickerWithCropsPropertyEditor.EditorAlias);
-        }
+    /// <inheritdoc />
+    public bool IsForEditor(IDataEditor? dataEditor) {
+        return dataEditor != null && dataEditor.Alias.InvariantEquals(LimboMediaPickerWithCropsPropertyEditor.EditorAlias);
+    }
 
-        IEnumerable<UmbracoEntityReference> IDataValueReference.GetReferences(object? value) {
+    IEnumerable<UmbracoEntityReference> IDataValueReference.GetReferences(object? value) {
 
-            if (value is not string str) return Enumerable.Empty<UmbracoEntityReference>();
+        if (value is not string str) return Enumerable.Empty<UmbracoEntityReference>();
 
-            var dtos = MediaWithCropsDeserializer.Deserialize(_jsonSerializer, str);
+        var dtos = MediaWithCropsDeserializer.Deserialize(_jsonSerializer, str);
 
-            return dtos
-                .Select(dto => new UmbracoEntityReference(new GuidUdi(Constants.UdiEntityType.Media, dto.MediaKey)))
-                .ToList();
-
-        }
+        return dtos
+            .Select(dto => new UmbracoEntityReference(new GuidUdi(Constants.UdiEntityType.Media, dto.MediaKey)))
+            .ToList();
 
     }
 
