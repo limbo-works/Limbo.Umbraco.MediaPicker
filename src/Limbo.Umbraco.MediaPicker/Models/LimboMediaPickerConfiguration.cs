@@ -2,6 +2,8 @@
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.PropertyEditors;
 
+#pragma warning disable CS0618
+
 namespace Limbo.Umbraco.MediaPicker.Models;
 
 /// <summary>

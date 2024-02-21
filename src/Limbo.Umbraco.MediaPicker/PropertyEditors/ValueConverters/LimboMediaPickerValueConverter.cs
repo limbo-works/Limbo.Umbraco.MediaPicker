@@ -11,6 +11,8 @@ using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
 using Umbraco.Cms.Core.PublishedCache;
 
+#pragma warning disable CS0618
+
 namespace Limbo.Umbraco.MediaPicker.PropertyEditors.ValueConverters;
 
 /// <summary>

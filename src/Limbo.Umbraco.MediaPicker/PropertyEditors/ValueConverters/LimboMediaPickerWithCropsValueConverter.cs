@@ -19,6 +19,7 @@ using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
 using Umbraco.Cms.Core.PublishedCache;
 using Umbraco.Cms.Core.Routing;
 using Umbraco.Cms.Core.Serialization;
+using Umbraco.Cms.Infrastructure.DeliveryApi;
 using Umbraco.Extensions;
 
 #pragma warning disable CS1591
@@ -42,7 +43,8 @@ public class LimboMediaPickerWithCropsValueConverter : MediaPickerWithCropsValue
         IJsonSerializer jsonSerializer,
         IPublishedUrlProvider publishedUrlProvider,
         IPublishedValueFallback publishedValueFallback,
-        ImageWithCropsTypeConverterCollection converterCollection) : base(publishedSnapshotAccessor, publishedUrlProvider, publishedValueFallback, jsonSerializer) {
+        ImageWithCropsTypeConverterCollection converterCollection,
+        IApiMediaWithCropsBuilder apiMediaWithCropsBuilder) : base(publishedSnapshotAccessor, publishedUrlProvider, publishedValueFallback, jsonSerializer, apiMediaWithCropsBuilder) {
         _publishedSnapshotAccessor = publishedSnapshotAccessor;
         _serviceProvider = serviceProvider;
         _jsonSerializer = jsonSerializer;
