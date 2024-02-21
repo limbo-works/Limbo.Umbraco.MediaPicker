@@ -27,7 +27,7 @@ public class LimboMediaPickerWithCropsConfigurationEditor : ConfigurationEditor<
                     MediaPickerUtils.PrependLinkToDescription(
                         field,
                         "See the documentation &rarr;",
-                        "https://packages.limbo.works/76bfafbd"
+                        "https://packages.limbo.works/7c48120f"
                     );
                     break;
 
@@ -35,7 +35,7 @@ public class LimboMediaPickerWithCropsConfigurationEditor : ConfigurationEditor<
                     MediaPickerUtils.PrependLinkToDescription(
                         field,
                         "See the documentation &rarr;",
-                        "https://packages.limbo.works/8d586746"
+                        "https://packages.limbo.works/14286d62"
                     );
                     break;
 

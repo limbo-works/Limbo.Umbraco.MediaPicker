@@ -22,7 +22,7 @@ public class LimboMediaPickerConfigurationEditor : ConfigurationEditor<LimboMedi
                     MediaPickerUtils.PrependLinkToDescription(
                         field,
                         "See the documentation &rarr;",
-                        "https://packages.limbo.works/ee815b6f"
+                        "https://packages.limbo.works/f020f7ab"
                     );
                     break;
 
