@@ -4,7 +4,7 @@ order: -1
 
 # Installation
 
-The package targets Umbraco 10+ and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
+The `v13.x` version of package targets Umbraco 13 and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
 
 ```
 dotnet add package Limbo.Umbraco.MediaPicker --version 13.0.0
