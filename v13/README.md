@@ -1,5 +1,5 @@
 ---
-title: v13
+title: Version 13
 ---
 
 # Limbo Media Picker
