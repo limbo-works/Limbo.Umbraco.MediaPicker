@@ -57,9 +57,7 @@ For older versions of Umbraco, see our older [**Skybrud.ImagePicker**](https://g
 
 ## Documentation
 
-Coming soon ;)
-
-Meanwhile check the documentation for [**Skybrud.ImagePicker**](https://packages.skybrud.dk/skybrud.imagepicker/docs/v3.0/).
+- [See the documentation at **packages.limbo.works**](https://packages.limbo.works/limbo.umbraco.mediapicker/docs/v1/)
 
 
 
