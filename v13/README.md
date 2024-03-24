@@ -11,5 +11,5 @@ The `v13.x` releases are build for Umbraco 13. You can read more about the packa
 
 ## Property Editors
 
-- [Media Picker V2](./property-editors/ediapicker/)
+- [Media Picker V2](./property-editors/mediapicker/)
 - [Media Picker V3](./property-editors/mediapickerwithcrops/)
