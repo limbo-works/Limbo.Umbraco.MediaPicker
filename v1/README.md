@@ -11,5 +11,5 @@ The `v1.x` releases are build for Umbraco 10, but also supports Umbraco 11 and 1
 
 ## Property Editors
 
-- [Image](./image/)
-- [ImageWithCrops](./imagewithcrops/)
+- [Media Picker V2](./mediapicker/)
+- [Media Picker V3](./mediapickerwithcrops/)
