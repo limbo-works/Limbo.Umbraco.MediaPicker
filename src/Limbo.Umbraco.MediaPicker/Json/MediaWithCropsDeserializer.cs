@@ -17,7 +17,7 @@ public class MediaWithCropsDeserializer {
 
         if (value == null) yield break;
 
-        string? rawJson = value as string ?? value?.ToString();
+        string? rawJson = value as string ?? value.ToString();
         if (string.IsNullOrWhiteSpace(rawJson)) yield break;
 
         // Old comma seperated UDI format

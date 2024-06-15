@@ -13,9 +13,11 @@
     <VersionPrefix>1.0.2</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
+    <Product>Limbo Media Picker</Product>
     <Authors>Anders Bjerner</Authors>
     <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
     <Title>Limbo Media Picker</Title>
+    <AssemblyTitle>Limbo Media Picker</AssemblyTitle>
     <Description>Extended media picker for Umbraco 10+.</Description>
   </PropertyGroup>
 
@@ -29,16 +31,18 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/limbo-works/Limbo.Umbraco.MediaPicker</RepositoryUrl>
   </PropertyGroup>
+
+  <!-- Include additional metadata in the assembly -->
   <ItemGroup>
-    <Content Remove="compilerconfig.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="compilerconfig.json" />
+    <AssemblyMetadata Include="PackageProjectUrl" Value="https://packages.limbo.works/limbo.umbraco.mediapicker/" />
+    <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/limbo.umbraco.mediapicker/docs/v1/" />
+    <AssemblyMetadata Include="NuGetUrl" Value="https://www.nuget.org/packages/Limbo.Umbraco.MediaPicker" />
+    <AssemblyMetadata Include="UmbracoMarketplaceUrl" Value="https://marketplace.umbraco.com/package/limbo.umbraco.mediapicker" />
   </ItemGroup>
 
   <!-- Include NuGet dependencies -->
   <ItemGroup>
-    <PackageReference Include="Skybrud.Essentials" Version="1.1.50" />
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.57" />
     <PackageReference Include="Umbraco.Cms.Core" Version="[10.0.0,12.999)" />
     <PackageReference Include="Umbraco.Cms.Web.Website" Version="[10.0.0,12.999)" />
     <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="[10.0.0,12.999)" />
@@ -48,7 +52,10 @@
   <ItemGroup>
     <Content Include="../build/Limbo.png" Pack="true" PackagePath="\" />
   </ItemGroup>
+
+  <!-- Exclude files from the NuGet package -->
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
     <None Include="compilerconfig.json" />
   </ItemGroup>
 

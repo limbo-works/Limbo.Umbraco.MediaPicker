@@ -48,14 +48,14 @@ public class LimboMediaPickerWithCropsPropertyEditor : MediaPicker3PropertyEdito
 
     #region Constructors
 
-    #endregion
-
-    #region Member methods
-
     public LimboMediaPickerWithCropsPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper iOHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory, iOHelper, editorConfigurationParser) {
         _iOHelper = iOHelper;
         _editorConfigurationParser = editorConfigurationParser;
     }
+
+    #endregion
+
+    #region Member methods
 
     protected override IConfigurationEditor CreateConfigurationEditor() => new LimboMediaPickerWithCropsConfigurationEditor(_iOHelper, _editorConfigurationParser);
 

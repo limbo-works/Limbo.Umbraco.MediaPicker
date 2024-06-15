@@ -81,7 +81,7 @@ public class LimboMediaPickerValueConverter : MediaPickerValueConverter {
                 IPublishedContent? media = publishedSnapshot?.Media?.GetById(udi);
                 if (media == null) continue;
 
-                // If the configuration doesn't specify a value type, we just create a new MediaItem (or relevant sub class)
+                // If the configuration doesn't specify a value type, we just create a new MediaItem (or relevant sub-class)
                 if (valueType == null) {
                     switch (media.ContentType.Alias) {
                         case Constants.Conventions.MediaTypes.Image: items.Add(new ImageItem(media, config)); break;
