@@ -64,10 +64,10 @@ public class LimboMediaPickerValueConverter : MediaPickerValueConverter {
         if (config == null) throw new Exception("Can't continue without a configuration.");
 
         // Get the UDIs from the intermediate value
-        Udi[] udis = inter as Udi[] ?? Array.Empty<Udi>();
+        Udi[] udis = inter as Udi[] ?? [];
 
         // Initialize a collection for the items
-        List<object> items = new();
+        List<object> items = [];
 
         // Determine the item value type
         Type? valueType = config.ValueType;

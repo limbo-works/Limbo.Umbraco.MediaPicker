@@ -30,7 +30,7 @@ public class ImageWithCropsReferenceFactory : IDataValueReferenceFactory, IDataV
 
     IEnumerable<UmbracoEntityReference> IDataValueReference.GetReferences(object? value) {
 
-        if (value is not string str) return Enumerable.Empty<UmbracoEntityReference>();
+        if (value is not string str) return [];
 
         var dtos = MediaWithCropsDeserializer.Deserialize(_jsonSerializer, str);
 

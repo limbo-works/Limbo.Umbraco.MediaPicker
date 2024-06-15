@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Limbo.Umbraco.MediaPicker.Models;
 using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
@@ -28,7 +27,7 @@ public class MediaWithCropsDeserializer {
                     yield return new MediaWithCropsDto {
                         Key = Guid.NewGuid(),
                         MediaKey = udi!.Guid,
-                        Crops = Enumerable.Empty<ImageCropperValue.ImageCropperCrop>(),
+                        Crops = [],
                         FocalPoint = new ImageCropperValue.ImageCropperFocalPoint {
                             Left = 0.5m,
                             Top = 0.5m

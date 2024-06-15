@@ -21,7 +21,7 @@ public class ImageReferenceFactory : IDataValueReferenceFactory, IDataValueRefer
 
     IEnumerable<UmbracoEntityReference> IDataValueReference.GetReferences(object? value) {
 
-        List<UmbracoEntityReference> references = new();
+        List<UmbracoEntityReference> references = [];
 
         if (value is not string udis) return references;
 
