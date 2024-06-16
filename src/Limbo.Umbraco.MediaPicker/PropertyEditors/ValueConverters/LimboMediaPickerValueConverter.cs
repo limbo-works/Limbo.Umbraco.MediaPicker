@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+using System.Diagnostics.CodeAnalysis;
 using Limbo.Umbraco.MediaPicker.Converters;
-using Limbo.Umbraco.MediaPicker.Json;
 using Limbo.Umbraco.MediaPicker.Models;
-using Microsoft.Extensions.DependencyInjection;
-using Skybrud.Essentials.Collections.Extensions;
-using Skybrud.Essentials.Strings.Extensions;
-using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
@@ -18,7 +11,6 @@ using Umbraco.Cms.Core.PublishedCache;
 using Umbraco.Cms.Core.Routing;
 using Umbraco.Cms.Core.Serialization;
 using Umbraco.Cms.Infrastructure.DeliveryApi;
-using Umbraco.Extensions;
 
 #pragma warning disable CS1591
 
@@ -26,27 +18,15 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors.ValueConverters;
 
 public class LimboMediaPickerValueConverter : MediaPickerWithCropsValueConverter {
 
-    private readonly IPublishedSnapshotAccessor _publishedSnapshotAccessor;
-    private readonly IServiceProvider _serviceProvider;
-    private readonly IJsonSerializer _jsonSerializer;
-    private readonly IPublishedUrlProvider _publishedUrlProvider;
-    private readonly IPublishedValueFallback _publishedValueFallback;
-
-    private readonly MediaPickerItemConverterCollection _converterCollection;
+    private readonly MediaPickerTypeConverterCollection _converterCollection;
 
     #region Constructors
 
     public LimboMediaPickerValueConverter(IPublishedSnapshotAccessor publishedSnapshotAccessor,
-        IServiceProvider serviceProvider,
         IJsonSerializer jsonSerializer,
         IPublishedUrlProvider publishedUrlProvider,
         IPublishedValueFallback publishedValueFallback,
-        MediaPickerItemConverterCollection converterCollection, IApiMediaWithCropsBuilder mediaWithCropsBuilder) : base(publishedSnapshotAccessor, publishedUrlProvider, publishedValueFallback, jsonSerializer, mediaWithCropsBuilder) {
-        _publishedSnapshotAccessor = publishedSnapshotAccessor;
-        _serviceProvider = serviceProvider;
-        _jsonSerializer = jsonSerializer;
-        _publishedUrlProvider = publishedUrlProvider;
-        _publishedValueFallback = publishedValueFallback;
+        MediaPickerTypeConverterCollection converterCollection, IApiMediaWithCropsBuilder mediaWithCropsBuilder) : base(publishedSnapshotAccessor, publishedUrlProvider, publishedValueFallback, jsonSerializer, mediaWithCropsBuilder) {
         _converterCollection = converterCollection;
     }
 
@@ -78,91 +58,9 @@ public class LimboMediaPickerValueConverter : MediaPickerWithCropsValueConverter
         LimboMediaPickerConfiguration? config = propertyType.DataType.ConfigurationAs<LimboMediaPickerConfiguration>();
         if (config == null) throw new Exception("Can't continue without a configuration.");
 
-        // Initialize a collection for the items
-        List<object> items = [];
+        object? value = base.ConvertIntermediateToObject(owner, propertyType, referenceCacheLevel, inter, preview);
 
-        // Get the UDIs from the intermediate value
-        IEnumerable<MediaWithCropsDto> dtos = MediaWithCropsDeserializer.Deserialize(_jsonSerializer, inter);
-
-        // Get the type converter (if any) and determine the item value type
-        Type? modelType = TryGetConverter(config, out IMediaPickerItemConverter? converter) ? converter!.GetType(propertyType, config) : null;
-
-        // Attempt to get the current published snapshot
-        if (_publishedSnapshotAccessor.TryGetPublishedSnapshot(out IPublishedSnapshot? publishedSnapshot)) {
-
-            foreach (MediaWithCropsDto dto in dtos) {
-
-                // Short-circuit on single item
-                if (!config.Multiple && items.Count > 0) break;
-
-                // Look up the media
-                IPublishedContent? mediaItem = publishedSnapshot?.Media?.GetById(dto.MediaKey);
-
-                if (mediaItem == null) continue;
-
-                ImageCropperValue localCrops = new() {
-                    Crops = dto.Crops,
-                    FocalPoint = dto.FocalPoint,
-                    Src = mediaItem.Url(_publishedUrlProvider)
-                };
-
-                localCrops.ApplyConfiguration(config);
-
-                // TODO: This should be optimized/cached, as calling Activator.CreateInstance is slow
-                var mediaWithCropsType = typeof(MediaWithCrops<>).MakeGenericType(mediaItem.GetType());
-                var mediaWithCrops = (MediaWithCrops) Activator.CreateInstance(mediaWithCropsType, mediaItem, _publishedValueFallback, localCrops)!;
-
-                // If the configuration doesn't specify a value type, we just create a new ImagePickerImage
-                if (modelType == null) {
-                    switch (mediaWithCrops.ContentType.Alias) {
-                        case Constants.Conventions.MediaTypes.Image: items.Add(new ImageWithCropsItem(mediaWithCrops, config)); break;
-                        case Constants.Conventions.MediaTypes.File: items.Add(new MediaWithCropsItem(mediaWithCrops)); break;
-                        default: items.Add(new MediaWithCropsItem(mediaWithCrops)); break;
-                    }
-                    continue;
-                }
-
-                if (converter != null) {
-                    items.Add(converter.Convert(owner, propertyType, mediaWithCrops, config));
-                    continue;
-                }
-
-                // If the selected type has a constructor with an ImagePickerConfiguration as the second parameter, we choose that constructor
-                if (HasConstructor<MediaWithCrops, LimboMediaPickerConfiguration>(modelType)) {
-                    items.Add(ActivatorUtilities.CreateInstance(_serviceProvider, modelType, mediaWithCrops, config));
-                    continue;
-                }
-
-                items.Add(ActivatorUtilities.CreateInstance(_serviceProvider, modelType, mediaWithCrops));
-
-            }
-
-        }
-
-        // Return the item(s) with the correct value type
-        modelType ??= GetModelType(config);
-
-        if (config.Multiple) {
-
-            IEnumerable value = items;
-
-            try {
-                value = value.Cast(modelType);
-            } catch (Exception ex) {
-                throw new Exception($"Failed casting items to type {modelType}", ex);
-            }
-
-            try {
-                value = value.ToList(modelType);
-            } catch (Exception ex) {
-                throw new Exception($"Failed converting items to list of type {modelType}", ex);
-            }
-
-            return value;
-
-        }
-
-        return config.Multiple ? items.Cast(modelType).ToList(modelType) : items.FirstOrDefault();
+        return TryGetConverter(config, out IMediaPickerTypeConverter? converter) ? converter.Convert(owner, propertyType, value, config) : value;
 
     }
 
@@ -174,58 +72,26 @@ public class LimboMediaPickerValueConverter : MediaPickerWithCropsValueConverter
     public override Type GetPropertyValueType(IPublishedPropertyType propertyType) {
 
         // Call the base value converter if the config isn't the right type
-        if (propertyType.DataType.Configuration is not LimboMediaPickerConfiguration config) return base.GetPropertyValueType(propertyType);
+        if (propertyType.DataType.Configuration is not LimboMediaPickerConfiguration config) {
+            return base.GetPropertyValueType(propertyType);
+        }
 
         // Look up the selected converter and get it's desired type
-        if (TryGetConverter(config, out IMediaPickerItemConverter? converter)) {
-            Type type = converter!.GetType(propertyType, config);
-            return config.Multiple ? typeof(IReadOnlyList<>).MakeGenericType(type) : type;
+        if (TryGetConverter(config, out IMediaPickerTypeConverter? converter)) {
+            return converter.GetType(propertyType, config);
         }
 
-        Type modelType = GetModelType(config);
+        // Get the type of each item
+        Type itemType = typeof(MediaWithCrops);
 
-        // If the data type allows multiple items, we should return IEnumerable<T> instead of T
-        return config.Multiple ? typeof(IReadOnlyList<>).MakeGenericType(modelType) : modelType;
-
-    }
-
-    private Type GetModelType(LimboMediaPickerConfiguration config) {
-
-        string[] filter = config.Filter.ToStringArray();
-
-        if (filter.Length == 1) {
-            return filter[0] switch {
-                Constants.Conventions.MediaTypes.Image => typeof(ImageWithCropsItem),
-                Constants.Conventions.MediaTypes.File => typeof(MediaWithCropsItem),
-                _ => typeof(MediaWithCropsItem)
-            };
-        }
-
-        return typeof(MediaWithCropsItem);
+        // If the data type allows multiple items, we should return IReadOnlyList<T> instead of T
+        return config.Multiple ? typeof(IReadOnlyList<>).MakeGenericType(itemType) : itemType;
 
     }
 
-    /// <summary>
-    /// Returns whether the specified <paramref name="type"/> contains at least one constructor where the first
-    /// parameter is of type <typeparamref name="T1"/> and the second parameter is of type <typeparamref name="T2"/>.
-    ///
-    /// Any additional parameter the constructors may have are not relevant here, as their values will be attempted
-    /// to be solved using dependency injection.
-    /// </summary>
-    /// <typeparam name="T1">The type of the first parameter.</typeparam>
-    /// <typeparam name="T2">The type of the second parameter.</typeparam>
-    /// <param name="type">The type to check.</param>
-    /// <returns><c>true</c> if at least one constructor is a match; otherwise <c>false</c>.</returns>
-    private static bool HasConstructor<T1, T2>(Type type) {
-        return type
-            .GetConstructors(BindingFlags.Public | BindingFlags.Instance)
-            .Select(cs => cs.GetParameters())
-            .Any(ps => ps.Length >= 2 && ps[0].ParameterType == typeof(T1) && ps[1].ParameterType == typeof(T2));
-    }
-
-    private bool TryGetConverter(LimboMediaPickerConfiguration config, out IMediaPickerItemConverter? converter) {
+    private bool TryGetConverter(LimboMediaPickerConfiguration config, [NotNullWhen(true)] out IMediaPickerTypeConverter? converter) {
         converter = null;
-        string? type = config.ItemConverter?.Type;
+        string? type = config.TypeConverter?.Type;
         return !string.IsNullOrWhiteSpace(type) && _converterCollection.TryGet(type, out converter);
     }
 

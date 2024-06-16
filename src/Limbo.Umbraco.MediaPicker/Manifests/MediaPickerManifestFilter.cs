@@ -17,8 +17,8 @@ public class MediaPickerManifestFilter : IManifestFilter {
             Version = MediaPickerPackage.InformationalVersion,
             BundleOptions = BundleOptions.Independent,
             Scripts = [
-                $"/App_Plugins/{MediaPickerPackage.Alias}/Scripts/Controllers/ItemConverter.js",
-                $"/App_Plugins/{MediaPickerPackage.Alias}/Scripts/Controllers/ItemConverterOverlay.js"
+                $"/App_Plugins/{MediaPickerPackage.Alias}/Scripts/Controllers/TypeConverter.js",
+                $"/App_Plugins/{MediaPickerPackage.Alias}/Scripts/Controllers/TypeConverterOverlay.js"
             ],
             Stylesheets = [
                 $"/App_Plugins/{MediaPickerPackage.Alias}/Styles/Styles.css"

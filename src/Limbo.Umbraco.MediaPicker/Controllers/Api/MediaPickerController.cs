@@ -19,16 +19,16 @@ public class MediaPickerController : UmbracoAuthorizedApiController {
 
     private static readonly string[] _versionSeparator = [", Version"];
 
-    private readonly MediaPickerItemConverterCollection _mediaPickerItemConverterCollection;
+    private readonly MediaPickerTypeConverterCollection _mediaPickerConverterCollection;
 
     #region Constructors
 
     /// <summary>
     /// Initializes a new instance based on the specified dependency.
     /// </summary>
-    /// <param name="mediaPickerItemConverterCollection"></param>
-    public MediaPickerController(MediaPickerItemConverterCollection mediaPickerItemConverterCollection) {
-        _mediaPickerItemConverterCollection = mediaPickerItemConverterCollection;
+    /// <param name="mediaPickerConverterCollection"></param>
+    public MediaPickerController(MediaPickerTypeConverterCollection mediaPickerConverterCollection) {
+        _mediaPickerConverterCollection = mediaPickerConverterCollection;
     }
 
     #endregion
@@ -36,19 +36,19 @@ public class MediaPickerController : UmbracoAuthorizedApiController {
     #region Public API methods
 
     /// <summary>
-    /// Returns a list of all item converters for the media picker property editor.
+    /// Returns a list of all converters for the media picker property editor.
     /// </summary>
-    /// <returns>A list of available item converters.</returns>
+    /// <returns>A list of available converters.</returns>
     [HttpGet]
-    public object GetItemConverters() {
-        return _mediaPickerItemConverterCollection.Select(Map);
+    public object GetConverters() {
+        return _mediaPickerConverterCollection.Select(Map);
     }
 
     #endregion
 
     #region Private helper methods
 
-    private static JObject Map(IMediaPickerItemConverter converter) {
+    private static JObject Map(IMediaPickerTypeConverter converter) {
 
         Type type = converter.GetType();
 

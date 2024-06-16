@@ -8,11 +8,11 @@ using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace Limbo.Umbraco.MediaPicker.Json.Newtonsoft;
 
-public class MediaPickerItemConverterJsonConverter : JsonConverter {
+public class MediaPickerTypeConverterJsonConverter : JsonConverter {
 
     public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) {
 
-        if (value is MediaPickerItemConverter converter && !string.IsNullOrWhiteSpace(converter.Type)) {
+        if (value is MediaPickerTypeConverter converter && !string.IsNullOrWhiteSpace(converter.Type)) {
             new JObject { { "type", converter.Type } }.WriteTo(writer);
             return;
         }
@@ -27,11 +27,11 @@ public class MediaPickerItemConverterJsonConverter : JsonConverter {
                 return null;
             case JsonToken.String: {
                 string? type = reader.Value as string;
-                return string.IsNullOrWhiteSpace(type) ? null : new MediaPickerItemConverter(type);
+                return string.IsNullOrWhiteSpace(type) ? null : new MediaPickerTypeConverter(type);
             }
             case JsonToken.StartObject: {
                 string? type = JObject.Load(reader).GetString("type");
-                return string.IsNullOrWhiteSpace(type) ? null : new MediaPickerItemConverter(type);
+                return string.IsNullOrWhiteSpace(type) ? null : new MediaPickerTypeConverter(type);
             }
             default:
                 throw new Exception($"Unsupported token type: {reader.TokenType}...");

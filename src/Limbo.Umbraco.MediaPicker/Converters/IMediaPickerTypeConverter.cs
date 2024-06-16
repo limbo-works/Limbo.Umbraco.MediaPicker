@@ -7,9 +7,9 @@ using Umbraco.Cms.Core.Models.PublishedContent;
 namespace Limbo.Umbraco.MediaPicker.Converters;
 
 /// <summary>
-/// Interface describing an item converter for converting instances of <see cref="MediaWithCropsItem"/> to another type.
+/// Interface describing a converter for converting instances of <see cref="MediaWithCrops"/> to another type.
 /// </summary>
-public interface IMediaPickerItemConverter {
+public interface IMediaPickerTypeConverter {
 
     /// <summary>
     /// Gets the alias of the converter.
@@ -39,6 +39,6 @@ public interface IMediaPickerItemConverter {
     /// <param name="source">The <see cref="MediaWithCropsItem"/> value to be converted.</param>
     /// <param name="config">The configuration of the parent data type.</param>
     /// <returns>The desired output value based on the <see cref="MediaWithCrops"/>.</returns>
-    object Convert(IPublishedElement owner, IPublishedPropertyType propertyType, MediaWithCrops source, LimboMediaPickerConfiguration config);
+    object? Convert(IPublishedElement owner, IPublishedPropertyType propertyType, object? source, LimboMediaPickerConfiguration config);
 
 }

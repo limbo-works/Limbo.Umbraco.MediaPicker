@@ -1,4 +1,4 @@
-﻿angular.module("umbraco").controller("Limbo.Umbraco.MediaPicker.ItemConverter.Controller", function ($scope, $http, editorService) {
+﻿angular.module("umbraco").controller("Limbo.Umbraco.MediaPicker.TypeConverter.Controller", function ($scope, $http, editorService) {
 
     // Get the base URL for the API controller
     const baseUrl = Umbraco.Sys.ServerVariables.umbracoSettings.umbracoPath;
@@ -28,7 +28,7 @@
         editorService.open({
             title: "Select image model",
             size: "medium",
-            view: `/App_Plugins/Limbo.Umbraco.MediaPicker/Views/ItemConverterOverlay.html?v=${v}`,
+            view: `/App_Plugins/Limbo.Umbraco.MediaPicker/Views/TypeConverterOverlay.html?v=${v}`,
             filter: true,
             availableItems: vm.converters,
             submit: function (model) {
@@ -65,7 +65,7 @@
 
         if (!$scope.model.value) $scope.model.value = "";
 
-        $http.get(`${baseUrl}/backoffice/Limbo/MediaPicker/GetItemConverters?editor=${editor}`).then(function (response) {
+        $http.get(`${baseUrl}/backoffice/Limbo/MediaPicker/GetConverters?editor=${editor}`).then(function (response) {
 
             vm.loaded = true;
             vm.converters = response.data;

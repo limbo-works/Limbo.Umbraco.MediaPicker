@@ -1,45 +1,45 @@
-﻿.limbo-umbraco-media-picker.item-converter {
+﻿.limbo-umbraco-media-picker.type-converter {
   max-width: 800px;
 }
-.limbo-umbraco-media-picker.item-converter.obsolete .umb-node-preview {
+.limbo-umbraco-media-picker.type-converter.obsolete .umb-node-preview {
   border-color: #D42054;
 }
-.limbo-umbraco-media-picker.item-converter.obsolete .alert-obsolete {
+.limbo-umbraco-media-picker.type-converter.obsolete .alert-obsolete {
   margin-bottom: -1px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-.limbo-umbraco-media-picker.item-converter-overlay .umb-node-preview {
+.limbo-umbraco-media-picker.type-converter-overlay .umb-node-preview {
   padding-left: 10px;
   cursor: pointer;
 }
-.limbo-umbraco-media-picker.item-converter-overlay .umb-node-preview:hover {
+.limbo-umbraco-media-picker.type-converter-overlay .umb-node-preview:hover {
   background: #e9e9eb;
 }
-.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete {
+.limbo-umbraco-media-picker.type-converter-overlay .item.obsolete {
   border: 1px solid #D42054;
 }
-.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview__name,
-.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview__description,
-.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview__icon {
+.limbo-umbraco-media-picker.type-converter-overlay .item.obsolete .umb-node-preview__name,
+.limbo-umbraco-media-picker.type-converter-overlay .item.obsolete .umb-node-preview__description,
+.limbo-umbraco-media-picker.type-converter-overlay .item.obsolete .umb-node-preview__icon {
   color: #D42054 !important;
 }
-.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview:hover {
+.limbo-umbraco-media-picker.type-converter-overlay .item.obsolete .umb-node-preview:hover {
   background: #D42054 !important;
   color: #fff !important;
 }
-.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview:hover .umb-node-preview__name,
-.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview:hover .umb-node-preview__description,
-.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview:hover .umb-node-preview__icon {
+.limbo-umbraco-media-picker.type-converter-overlay .item.obsolete .umb-node-preview:hover .umb-node-preview__name,
+.limbo-umbraco-media-picker.type-converter-overlay .item.obsolete .umb-node-preview:hover .umb-node-preview__description,
+.limbo-umbraco-media-picker.type-converter-overlay .item.obsolete .umb-node-preview:hover .umb-node-preview__icon {
   color: #fff !important;
 }
-.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview:hover .label-obsolete {
+.limbo-umbraco-media-picker.type-converter-overlay .item.obsolete .umb-node-preview:hover .label-obsolete {
   color: #fff !important;
 }
-.limbo-umbraco-media-picker.item-converter-overlay .item .umb-node-preview {
+.limbo-umbraco-media-picker.type-converter-overlay .item .umb-node-preview {
   position: relative;
 }
-.limbo-umbraco-media-picker.item-converter-overlay .item .label-obsolete {
+.limbo-umbraco-media-picker.type-converter-overlay .item .label-obsolete {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -47,7 +47,7 @@
   font-size: 12px;
   color: #D42054 !important;
 }
-.limbo-umbraco-media-picker.item-converter-overlay .item + .item.obsolete {
+.limbo-umbraco-media-picker.type-converter-overlay .item + .item.obsolete {
   margin-top: -1px;
 }
 .limbo-media-picker-separator {

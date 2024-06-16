@@ -14,13 +14,13 @@ public class LimboMediaPickerConfiguration : MediaPicker3Configuration {
     #region Properties
 
     /// <summary>
-    /// Gets a reference to a <see cref="JToken"/> with information about the selected item converter.
+    /// Gets a reference to a <see cref="MediaPickerTypeConverter"/> with information about the selected type converter.
     /// </summary>
-    [ConfigurationField("itemConverter",
-        "Item converter",
-        $"/App_Plugins/{MediaPickerPackage.Alias}/Views/ItemConverter.html?&v={{version}}",
-        Description = "Select a item converter, which will be used for converting the selected items.")]
-    public MediaPickerItemConverter? ItemConverter { get; set; }
+    [ConfigurationField("typeConverter",
+        "Type converter",
+        $"/App_Plugins/{MediaPickerPackage.Alias}/Views/TypeConverter.html?&v={{version}}",
+        Description = "Select a type converter, which will be used for converting the default media picker value.")]
+    public MediaPickerTypeConverter? TypeConverter { get; set; }
 
     /// <summary>
     /// Gets the crop mode to be used for the returned values. This property currently always returns <see cref="ImageCropMode"/>.

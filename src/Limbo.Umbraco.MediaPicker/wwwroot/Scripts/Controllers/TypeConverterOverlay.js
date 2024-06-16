@@ -1,4 +1,4 @@
-﻿angular.module("umbraco").controller("Limbo.Umbraco.MediaPicker.ItemConverterOverlay.Controller", function ($scope) {
+﻿angular.module("umbraco").controller("Limbo.Umbraco.MediaPicker.TypeConverterOverlay.Controller", function ($scope) {
 
     const vm = this;
 

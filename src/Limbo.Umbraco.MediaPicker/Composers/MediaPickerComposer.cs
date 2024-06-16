@@ -22,8 +22,8 @@ public class ImagePickerComposer : IComposer {
             .Append<MediaPickerReferenceFactory>();
 
         builder
-            .WithCollectionBuilder<MediaPickerItemConverterCollectionBuilder>()
-            .Add(() => builder.TypeLoader.GetTypes<IMediaPickerItemConverter>());
+            .WithCollectionBuilder<MediaPickerTypeConverterCollectionBuilder>()
+            .Add(() => builder.TypeLoader.GetTypes<IMediaPickerTypeConverter>());
 
         builder
             .ManifestFilters()
