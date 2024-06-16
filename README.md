@@ -1,17 +1,17 @@
 # Limbo Media Picker
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/limbo-works/Limbo.Umbraco.MediaPicker/blob/v1/main/LICENSE.md)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/limbo-works/Limbo.Umbraco.MediaPicker/blob/v13/main/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.MediaPicker.svg)](https://www.nuget.org/packages/Limbo.Umbraco.MediaPicker)
 [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.MediaPicker.svg)](https://www.nuget.org/packages/Limbo.Umbraco.MediaPicker)
 [![Our Umbraco](https://img.shields.io/badge/our-umbraco-%233544B1)](https://our.umbraco.com/packages/backoffice-extensions/limbo-media-picker/)
 [![Umbraco Marketplace](https://img.shields.io/badge/umbraco-marketplace-%233544B1)](https://marketplace.umbraco.com/package/limbo.umbraco.mediapicker)
 
-**Limbo.Umbraco.MediaPicker** is a package for Umbraco 10+ with property editors extending Umbraco's default media pickers.
+**Limbo.Umbraco.MediaPicker** is a package for Umbraco with property editors extending Umbraco's default media picker.
 
 <table>
   <tr>
     <td><strong>License:</strong></td>
-    <td><a href="./LICENSE.md"><strong>MIT License</strong></a></td>
+    <td><a href="https://github.com/limbo-works/Limbo.Umbraco.MediaPicker/blob/v13/main/LICENSE.md"><strong>MIT License</strong></a></td>
   </tr>
   <tr>
     <td><strong>Umbraco:</strong></td>
@@ -31,16 +31,16 @@
 
 ## Installation
 
-The package targets Umbraco 10+ and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
+The package targets Umbraco 13 and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.MediaPicker --version 1.0.2
+dotnet add package Limbo.Umbraco.MediaPicker --version 13.0.0-beta001
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.MediaPicker -Version 1.0.2
+Install-Package Limbo.Umbraco.MediaPicker -Version 13.0.0-beta001
 ```
 
 For older versions of Umbraco, see our older [**Skybrud.ImagePicker**](https://github.com/skybrud/Skybrud.ImagePicker) package.
@@ -53,15 +53,13 @@ For older versions of Umbraco, see our older [**Skybrud.ImagePicker**](https://g
 
 - Allows selecting a *type converter* on the data type, in which case the type converter will be used for converting the selected items from Umbraco's `MediaWithCrops` to a desired type.
 
-- Allows selecting a *value type* on the data type, in which case this type is used instead of Umbraco's `MediaWithCrops` model.
-
 
 
 <br /><br />
 
 ## Documentation
 
-- [See the documentation at **packages.limbo.works**](https://packages.limbo.works/limbo.umbraco.mediapicker/docs/v1/)
+- [See the documentation at **packages.limbo.works**](https://packages.limbo.works/limbo.umbraco.mediapicker/docs/v13/)
 
 
 
