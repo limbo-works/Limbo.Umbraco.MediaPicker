@@ -1,4 +1,4 @@
-﻿<div class="limbo-umbraco-mediapicker type-picker-overlay" ng-controller="Limbo.Umbraco.MediaPicker.TypePickerOverlay.Controller as vm">
+﻿<div class="limbo-umbraco-media-picker item-converter-overlay" ng-controller="Limbo.Umbraco.MediaPicker.ItemConverterOverlay.Controller as vm">
     <umb-editor-view>
         <umb-editor-header name="model.title"
                            name-locked="true"
@@ -19,12 +19,20 @@
                                umb-auto-focus
                                no-dirty-check />
                     </div>
-                    <umb-node-preview ng-repeat="availableItem in model.availableItems | orderBy:'name' | filter:vm.searchTerm"
-                                      ng-click="vm.select(availableItem)"
-                                      icon="availableItem.icon"
-                                      name="availableItem.name"
-                                      description="availableItem.description">
-                    </umb-node-preview>
+                    <div class="item" ng-repeat="item in model.availableItems | orderBy:'name' | filter:vm.searchTerm" ng-class="{obsolete: item.obsolete}">
+                        <div class="umb-node-preview" ng-click="vm.select(item)" role="button">
+                            <span class="label-obsolete" ng-if="item.obsolete">Obsolete</span>
+                            <div class="flex">
+                                <umb-icon ng-if="item.icon" icon="{{item.icon}}" class="umb-node-preview__icon"></umb-icon>
+                                <div class="umb-node-preview__content">
+                                    <div class="umb-node-preview__name">
+                                        {{item.name}}
+                                    </div>
+                                    <div class="umb-node-preview__description" ng-if="item.description">{{item.description}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </umb-box-content>
             </umb-box>
         </umb-editor-container>

@@ -52,7 +52,7 @@ public class ImageWithCropsItem : MediaWithCropsItem {
     /// </summary>
     /// <param name="media">The <see cref="MediaWithCrops"/> instance to wrap.</param>
     /// <param name="config">The ImagePicker config</param>
-    public ImageWithCropsItem(MediaWithCrops media, LimboMediaPickerWithCropsConfiguration config) : base(media) {
+    public ImageWithCropsItem(MediaWithCrops media, LimboMediaPickerConfiguration config) : base(media) {
 
         int width = media.Value<int>(Constants.Conventions.Media.Width);
         int height = media.Value<int>(Constants.Conventions.Media.Height);

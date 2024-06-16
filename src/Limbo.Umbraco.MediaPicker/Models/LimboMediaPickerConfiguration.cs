@@ -1,41 +1,37 @@
-﻿using System;
+﻿using MessagePack;
+using Newtonsoft.Json.Linq;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.PropertyEditors;
 
 namespace Limbo.Umbraco.MediaPicker.Models;
 
 /// <summary>
-/// Extends the mediapicker configuration and adds our own fields.
+/// Extends MediaPicker3 with our own additional fields.
 /// </summary>
-/// <seealso cref="LimboMediaPickerConfiguration" />
-public class LimboMediaPickerConfiguration : MediaPickerConfiguration {
-
-    private Type? _valueType;
+/// <seealso cref="MediaPicker3Configuration" />
+public class LimboMediaPickerConfiguration : MediaPicker3Configuration {
 
     #region Properties
 
     /// <summary>
-    /// Gets the name of the value type. This will be used for resolving the <see cref="ValueType"/> parameter.
+    /// Gets a reference to a <see cref="JToken"/> with information about the selected item converter.
     /// </summary>
-    [ConfigurationField("valueType",
-        "Value type",
-        $"/App_Plugins/{MediaPickerPackage.Alias}/Views/TypePicker.html?type=ValueType&editor=v2&v={{version}}",
-        Description = "Select the .NET value type that should be used for representing the selected image(s).")]
-    public string? ValueTypeName { get; set; }
-
-    /// <summary>
-    /// Gets the value type.
-    /// </summary>
-    public Type? ValueType => _valueType == null && string.IsNullOrWhiteSpace(ValueTypeName) == false ? _valueType = Type.GetType(ValueTypeName) : _valueType;
+    [ConfigurationField("itemConverter",
+        "Item converter",
+        $"/App_Plugins/{MediaPickerPackage.Alias}/Views/ItemConverter.html?&v={{version}}",
+        Description = "Select a item converter, which will be used for converting the selected items.")]
+    public MediaPickerItemConverter? ItemConverter { get; set; }
 
     /// <summary>
     /// Gets the crop mode to be used for the returned values. This property currently always returns <see cref="ImageCropMode"/>.
     /// </summary>
+    [IgnoreMember]
     public ImageCropMode CropMode => ImageCropMode.Crop;
 
     /// <summary>
     /// Gets whether generated URLs should prefer a focal point. This property currently always returns <c>true</c>.
     /// </summary>
+    [IgnoreMember]
     public bool PreferFocalPoint => true;
 
     #endregion

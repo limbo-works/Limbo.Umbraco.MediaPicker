@@ -12,23 +12,47 @@ public class LimboMediaPickerConfigurationEditor : ConfigurationEditor<LimboMedi
 
     public LimboMediaPickerConfigurationEditor(IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(ioHelper, editorConfigurationParser) {
 
-        foreach (var field in Fields) {
+        Field(nameof(MediaPicker3Configuration.StartNodeId))
+            .Config = new Dictionary<string, object> { { "idType", "udi" } };
+
+        Field(nameof(MediaPicker3Configuration.Filter))
+            .Config = new Dictionary<string, object> { { "itemType", "media" } };
+
+        foreach (ConfigurationField field in Fields) {
 
             if (field.View is not null) field.View = field.View.Replace("{version}", MediaPickerPackage.InformationalVersion);
 
             switch (field.Key) {
 
-                case "valueType":
+                case "itemConverter":
                     MediaPickerUtils.PrependLinkToDescription(
                         field,
                         "See the documentation &rarr;",
-                        "https://packages.limbo.works/ee815b6f"
+                        "https://packages.limbo.works/e7b725c2"
                     );
+                    break;
+
+                case "multiple":
+                    field.Description = "Outputs an <strong>IReadOnlyList&lt;T&gt;</strong> instead of <strong>T</strong> if enabled.";
                     break;
 
             }
 
         }
+
+        Fields.Insert(0, new ConfigurationField {
+            Key = "advancedSeparator",
+            Name = "Advanced Options",
+            View = $"/App_Plugins/{MediaPickerPackage.Alias}/Views/Separator.html",
+            HideLabel = true
+        });
+
+        Fields.Insert(2, new ConfigurationField {
+            Key = "defaultSeparator",
+            Name = "Default Options",
+            View = $"/App_Plugins/{MediaPickerPackage.Alias}/Views/Separator.html",
+            HideLabel = true
+        });
 
     }
 

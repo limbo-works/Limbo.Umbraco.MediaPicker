@@ -19,12 +19,11 @@ public class ImagePickerComposer : IComposer {
 
         builder
             .DataValueReferenceFactories()
-            .Append<ImageReferenceFactory>()
-            .Append<ImageWithCropsReferenceFactory>();
+            .Append<MediaPickerReferenceFactory>();
 
         builder
-            .WithCollectionBuilder<ImageWithCropsTypeConverterCollectionBuilder>()
-            .Add(() => builder.TypeLoader.GetTypes<IImageWithCropsTypeConverter>());
+            .WithCollectionBuilder<MediaPickerItemConverterCollectionBuilder>()
+            .Add(() => builder.TypeLoader.GetTypes<IMediaPickerItemConverter>());
 
         builder
             .ManifestFilters()

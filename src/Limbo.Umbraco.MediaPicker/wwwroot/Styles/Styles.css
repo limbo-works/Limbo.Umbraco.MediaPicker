@@ -1,9 +1,76 @@
-﻿.limbo-umbraco-mediapicker.type-picker-overlay .umb-node-preview {
+﻿.limbo-umbraco-media-picker.item-converter {
+  max-width: 800px;
+}
+.limbo-umbraco-media-picker.item-converter.obsolete .umb-node-preview {
+  border-color: #D42054;
+}
+.limbo-umbraco-media-picker.item-converter.obsolete .alert-obsolete {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.limbo-umbraco-media-picker.item-converter-overlay .umb-node-preview {
   padding-left: 10px;
   cursor: pointer;
 }
-.limbo-umbraco-mediapicker.type-picker-overlay .umb-node-preview:hover {
+.limbo-umbraco-media-picker.item-converter-overlay .umb-node-preview:hover {
   background: #e9e9eb;
+}
+.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete {
+  border: 1px solid #D42054;
+}
+.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview__name,
+.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview__description,
+.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview__icon {
+  color: #D42054 !important;
+}
+.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview:hover {
+  background: #D42054 !important;
+  color: #fff !important;
+}
+.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview:hover .umb-node-preview__name,
+.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview:hover .umb-node-preview__description,
+.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview:hover .umb-node-preview__icon {
+  color: #fff !important;
+}
+.limbo-umbraco-media-picker.item-converter-overlay .item.obsolete .umb-node-preview:hover .label-obsolete {
+  color: #fff !important;
+}
+.limbo-umbraco-media-picker.item-converter-overlay .item .umb-node-preview {
+  position: relative;
+}
+.limbo-umbraco-media-picker.item-converter-overlay .item .label-obsolete {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 3px 7px;
+  font-size: 12px;
+  color: #D42054 !important;
+}
+.limbo-umbraco-media-picker.item-converter-overlay .item + .item.obsolete {
+  margin-top: -1px;
+}
+.limbo-media-picker-separator {
+  border-bottom: 2px solid #F4C1BC;
+  margin: 0;
+  padding: 0;
+  margin-bottom: -21px;
+  z-index: 2;
+  position: relative;
+}
+.limbo-media-picker-separator-title {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.limbo-media-picker-separator-description {
+  font-size: 11px;
+  color: #333;
+  margin-top: -5px;
+}
+umb-property + umb-property .limbo-media-picker-separator {
+  background: #fff;
+  margin-top: -21px;
+  padding-top: 41px;
 }
 .btn.btn-xs.limbo-media-picker-button {
   margin-bottom: 5px;

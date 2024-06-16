@@ -1,7 +1,8 @@
-﻿<div ng-controller="Limbo.Umbraco.MediaPicker.TypePicker.Controller as vm">
+﻿<div class="limbo-umbraco-media-picker item-converter" ng-class="{obsolete: vm.selected.obsolete}" ng-controller="Limbo.Umbraco.MediaPicker.ItemConverter.Controller as vm">
     <div ng-if="vm.notFound" class="alert alert-danger">
-        The selected type <strong>{{model.value}}</strong> could not be found.
+        The selected item converter <strong>{{model.value}}</strong> could not be found.
     </div>
+    <div ng-if="vm.obsolete" class="alert alert-danger alert-obsolete">{{vm.obsolete}}</div>
     <umb-node-preview ng-if="vm.selected"
                       single="true"
                       icon="vm.selected.icon"

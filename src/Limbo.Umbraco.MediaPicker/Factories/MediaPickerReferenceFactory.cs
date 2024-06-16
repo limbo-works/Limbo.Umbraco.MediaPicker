@@ -12,11 +12,11 @@ using Umbraco.Extensions;
 
 namespace Limbo.Umbraco.MediaPicker.Factories;
 
-public class ImageWithCropsReferenceFactory : IDataValueReferenceFactory, IDataValueReference {
+public class MediaPickerReferenceFactory : IDataValueReferenceFactory, IDataValueReference {
 
     private readonly IJsonSerializer _jsonSerializer;
 
-    public ImageWithCropsReferenceFactory(IJsonSerializer jsonSerializer) {
+    public MediaPickerReferenceFactory(IJsonSerializer jsonSerializer) {
         _jsonSerializer = jsonSerializer;
     }
 
@@ -25,7 +25,7 @@ public class ImageWithCropsReferenceFactory : IDataValueReferenceFactory, IDataV
 
     /// <inheritdoc />
     public bool IsForEditor(IDataEditor? dataEditor) {
-        return dataEditor != null && dataEditor.Alias.InvariantEquals(LimboMediaPickerWithCropsPropertyEditor.EditorAlias);
+        return dataEditor != null && dataEditor.Alias.InvariantEquals(LimboMediaPickerEditor.EditorAlias);
     }
 
     IEnumerable<UmbracoEntityReference> IDataValueReference.GetReferences(object? value) {
