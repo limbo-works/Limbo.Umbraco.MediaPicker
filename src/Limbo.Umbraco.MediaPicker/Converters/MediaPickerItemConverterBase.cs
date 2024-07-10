@@ -122,7 +122,9 @@ public abstract class MediaPickerItemConverterBase : IMediaPickerTypeConverter {
             if (ConvertItem(owner, propertyType, media, config) is { } converted) temp.Add(converted);
         }
 
-        return temp.Cast(GetItemType(propertyType, config));
+        Type itemType = GetItemType(propertyType, config);
+
+        return temp.Cast(itemType).ToList(itemType);
 
     }
 
