@@ -34,13 +34,13 @@
 The package targets Umbraco 13 and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.MediaPicker --version 13.0.0-beta001
+dotnet add package Limbo.Umbraco.MediaPicker --version 13.0.0-beta002
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.MediaPicker -Version 13.0.0-beta001
+Install-Package Limbo.Umbraco.MediaPicker -Version 13.0.0-beta002
 ```
 
 For older versions of Umbraco, see our older [**Skybrud.ImagePicker**](https://github.com/skybrud/Skybrud.ImagePicker) package.
