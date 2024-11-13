@@ -15,11 +15,11 @@
   </tr>
   <tr>
     <td><strong>Umbraco:</strong></td>
-    <td>Umbraco 10, 11 and 12</td>
+    <td>Umbraco 13</td>
   </tr>
   <tr>
     <td><strong>Target Framework:</strong></td>
-    <td>.NET 6</td>
+    <td>.NET 8</td>
   </tr>
 </table>
 
@@ -31,19 +31,27 @@
 
 ## Installation
 
-The package targets Umbraco 13 and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
+### Umbraco 13
+
+The latest version of the package targets Umbraco 13 and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.MediaPicker --version 13.0.0-beta002
+dotnet add package Limbo.Umbraco.MediaPicker --version 13.0.0
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.MediaPicker -Version 13.0.0-beta002
+Install-Package Limbo.Umbraco.MediaPicker -Version 13.0.0
 ```
 
-For older versions of Umbraco, see our older [**Skybrud.ImagePicker**](https://github.com/skybrud/Skybrud.ImagePicker) package.
+### Umbraco 10, 11 and 12
+
+See the [**`v1.x`**](https://github.com/limbo-works/Limbo.Umbraco.MediaPicker/tree/v1/main) branch.
+
+### Umbraco 7 and 8
+
+See our older [**Skybrud.ImagePicker**](https://github.com/skybrud/Skybrud.ImagePicker) package.
 
 
 
