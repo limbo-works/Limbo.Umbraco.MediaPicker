@@ -1,5 +1,4 @@
 ﻿using MessagePack;
-using Newtonsoft.Json.Linq;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.PropertyEditors;
 

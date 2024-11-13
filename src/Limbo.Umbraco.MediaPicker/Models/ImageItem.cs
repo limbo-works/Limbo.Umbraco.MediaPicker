@@ -44,8 +44,8 @@ public class ImageItem : MediaItem {
     /// <summary>
     /// Initializes a new image item.
     /// </summary>
-    /// <param name="media">An instance of <see cref="IPublishedContent"/> representing the media.</param>.
-    /// <param name="config">The ImagePicker config</param>
+    /// <param name="media">An instance of <see cref="IPublishedContent"/> representing the media.</param>
+    /// <param name="config">The media picker data type configuration.</param>
     public ImageItem(IPublishedContent media, LimboMediaPickerConfiguration config) : base(media) {
 
         int width = media.Value<int>(Constants.Conventions.Media.Width);

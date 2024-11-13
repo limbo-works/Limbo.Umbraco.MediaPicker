@@ -26,9 +26,8 @@ public class FileItem : MediaItem {
     /// <summary>
     /// Initializes a new file item.
     /// </summary>
-    /// <param name="media">An instance of <see cref="IPublishedContent"/> representing the media.</param>.
-    /// <param name="config">The ImagePicker config</param>
-    public FileItem(IPublishedContent media, LimboMediaPickerConfiguration config) : base(media) {
+    /// <param name="media">An instance of <see cref="IPublishedContent"/> representing the media.</param>
+    public FileItem(IPublishedContent media) : base(media) {
         Bytes = media.Value<int>(Constants.Conventions.Media.Bytes);
     }
 
