@@ -1,4 +1,5 @@
-﻿using Umbraco.Cms.Core.IO;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
@@ -48,15 +49,18 @@ public class LimboMediaPickerEditor : MediaPicker3PropertyEditor {
 
     #region Constructors
 
-    public LimboMediaPickerEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper iOHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory, iOHelper, editorConfigurationParser) {
+    public LimboMediaPickerEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper iOHelper, IEditorConfigurationParser editorConfigurationParser, [FromKeyedServices(MediaPickerPackage.Alias)] IPropertyIndexValueFactory propertyIndexValueFactory) : base(dataValueEditorFactory, iOHelper, editorConfigurationParser) {
         _iOHelper = iOHelper;
         _editorConfigurationParser = editorConfigurationParser;
+        PropertyIndexValueFactory = propertyIndexValueFactory;
         SupportsReadOnly = true;
     }
 
     #endregion
 
     #region Member methods
+
+    public override IPropertyIndexValueFactory PropertyIndexValueFactory { get; }
 
     protected override IConfigurationEditor CreateConfigurationEditor() => new LimboMediaPickerConfigurationEditor(_iOHelper, _editorConfigurationParser);
 

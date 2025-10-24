@@ -1,8 +1,10 @@
 ﻿using Limbo.Umbraco.MediaPicker.Converters;
+using Limbo.Umbraco.MediaPicker.Extensions;
 using Limbo.Umbraco.MediaPicker.Factories;
 using Limbo.Umbraco.MediaPicker.Manifests;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
+using Umbraco.Cms.Core.PropertyEditors;
 
 namespace Limbo.Umbraco.MediaPicker.Composers;
 
@@ -26,6 +28,7 @@ public class ImagePickerComposer : IComposer {
             .Add(() => builder.TypeLoader.GetTypes<IMediaPickerTypeConverter>());
 
         builder
+            .AddLimboMediaPickerPropertyIndexValueFactory<NoopPropertyIndexValueFactory>()
             .ManifestFilters()
             .Append<MediaPickerManifestFilter>();
 
