@@ -1,6 +1,7 @@
-﻿using System;
+﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
+// SemVersion property removed - it was only used for cache busting the old AngularJS views.
+using System;
 using System.Diagnostics;
-using Umbraco.Cms.Core.Semver;
 
 namespace Limbo.Umbraco.MediaPicker;
 
@@ -30,10 +31,5 @@ public static class MediaPickerPackage {
     public static readonly string InformationalVersion = FileVersionInfo
         .GetVersionInfo(typeof(MediaPickerPackage).Assembly.Location).ProductVersion!
         .Split('+')[0];
-
-    /// <summary>
-    /// Gets the semantic version of the package.
-    /// </summary>
-    public static readonly SemVersion SemVersion = InformationalVersion;
 
 }

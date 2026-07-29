@@ -1,21 +1,29 @@
-﻿using System;
+﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
+// Rewritten from UmbracoAuthorizedApiController (removed in Umbraco 14) to a Management API controller.
+// Route: GET /umbraco/management/api/v1/limbo/media-picker/converters
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Limbo.Umbraco.MediaPicker.Converters;
+using Limbo.Umbraco.MediaPicker.Models.Api;
+using Asp.Versioning;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Reflection.Extensions;
-using Umbraco.Cms.Web.BackOffice.Controllers;
-using Umbraco.Cms.Web.Common.Attributes;
-using Umbraco.Cms.Web.Common.Filters;
+using Umbraco.Cms.Api.Management.Controllers;
+using Umbraco.Cms.Api.Management.Routing;
 
 namespace Limbo.Umbraco.MediaPicker.Controllers.Api;
 
 /// <summary>
-/// Umbraco authorized controller for the backoffice plugins
+/// Management API controller used by the backoffice UI of the package.
 /// </summary>
-[AngularJsonOnlyConfiguration]
-[PluginController("Limbo")]
-public class MediaPickerController : UmbracoAuthorizedApiController {
+// [CHANGE: QA review fix] Related: wwwroot/limbo-media-picker.element.js, wwwroot/limbo-media-picker-type-converter.element.js, wwwroot/umbraco-package.json
+// Explicit API version so the "v1" URL segment always resolves (matches the documented Management API controller pattern).
+[ApiVersion("1.0")]
+[ApiExplorerSettings(GroupName = "Limbo Media Picker")]
+[VersionedApiBackOfficeRoute("limbo/media-picker")]
+public class MediaPickerController : ManagementApiControllerBase {
 
     private static readonly string[] _versionSeparator = [", Version"];
 
@@ -39,38 +47,31 @@ public class MediaPickerController : UmbracoAuthorizedApiController {
     /// Returns a list of all converters for the media picker property editor.
     /// </summary>
     /// <returns>A list of available converters.</returns>
-    [HttpGet]
-    public object GetConverters() {
-        return _mediaPickerConverterCollection.Select(Map);
+    [HttpGet("converters")]
+    [ProducesResponseType<IEnumerable<MediaPickerTypeConverterModel>>(StatusCodes.Status200OK)]
+    public IActionResult GetConverters() {
+        return Ok(_mediaPickerConverterCollection.Select(Map));
     }
 
     #endregion
 
     #region Private helper methods
 
-    private static JObject Map(IMediaPickerTypeConverter converter) {
+    private static MediaPickerTypeConverterModel Map(IMediaPickerTypeConverter converter) {
 
         Type type = converter.GetType();
 
         string icon = $"icon-box color-{type.Assembly.FullName?.Split('.')[0].Split(',')[0].Trim().ToLower()}";
         string name = string.IsNullOrWhiteSpace(converter.Name) ? type.Name : converter.Name;
 
-        JObject json = new() {
-            { "assembly", type.Assembly.FullName },
-            { "type", converter.Alias },
-            { "icon", icon },
-            { "name", name },
-            { "description", $"{type.AssemblyQualifiedName?.Split(_versionSeparator, StringSplitOptions.None)[0]}.dll" }
+        return new MediaPickerTypeConverterModel {
+            Assembly = type.Assembly.FullName,
+            Type = converter.Alias,
+            Icon = icon,
+            Name = name,
+            Description = $"{type.AssemblyQualifiedName?.Split(_versionSeparator, StringSplitOptions.None)[0]}.dll",
+            Obsolete = type.IsObsolete(out ObsoleteAttribute? obsolete) ? new MediaPickerTypeConverterObsoleteModel { Message = obsolete!.Message } : null
         };
-
-        if (type.IsObsolete(out ObsoleteAttribute? obsolete)) {
-            json.Add("obsolete", new JObject {
-                {"message", obsolete!.Message ?? string.Empty}
-            });
-        }
-
-
-        return json;
 
     }
 
