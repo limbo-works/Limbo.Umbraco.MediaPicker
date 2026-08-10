@@ -1,0 +1,103 @@
+{
+    "name": "Limbo.Umbraco.MediaPicker",
+    "version": "17.0.0",
+    "allowTelemetry": true,
+    "extensions": [
+        {
+            "type": "propertyEditorSchema",
+            "name": "Limbo Media Picker Schema",
+            "alias": "Limbo.Umbraco.MediaPicker",
+            "meta": {
+                "defaultPropertyEditorUiAlias": "Limbo.PropertyEditorUi.MediaPicker",
+                "settings": {
+                    "properties": [
+                        {
+                            "alias": "typeConverter",
+                            "label": "Type converter",
+                            "description": "Select a type converter, which will be used for converting the default media picker value.\n\n[See the documentation →](https://packages.limbo.works/e7b725c2)",
+                            "propertyEditorUiAlias": "Limbo.PropertyEditorUi.MediaPickerTypeConverter"
+                        },
+                        {
+                            "alias": "filter",
+                            "label": "Accepted types",
+                            "description": "Limit to specific types",
+                            "propertyEditorUiAlias": "Umb.PropertyEditorUi.MediaTypePicker"
+                        },
+                        {
+                            "alias": "multiple",
+                            "label": "Pick multiple items",
+                            "description": "Outputs an `IReadOnlyList<T>` instead of `T` if enabled.",
+                            "propertyEditorUiAlias": "Umb.PropertyEditorUi.Toggle"
+                        },
+                        {
+                            "alias": "validationLimit",
+                            "label": "Amount",
+                            "description": "Set a required range of medias",
+                            "propertyEditorUiAlias": "Umb.PropertyEditorUi.NumberRange",
+                            "config": [
+                                {
+                                    "alias": "validationRange",
+                                    "value": { "min": 0 }
+                                }
+                            ]
+                        },
+                        {
+                            "alias": "startNodeId",
+                            "label": "Start node",
+                            "propertyEditorUiAlias": "Umb.PropertyEditorUi.MediaEntityPicker",
+                            "config": [
+                                {
+                                    "alias": "validationLimit",
+                                    "value": { "min": 0, "max": 1 }
+                                }
+                            ]
+                        },
+                        {
+                            "alias": "enableLocalFocalPoint",
+                            "label": "Enable Focal Point",
+                            "propertyEditorUiAlias": "Umb.PropertyEditorUi.Toggle"
+                        },
+                        {
+                            "alias": "crops",
+                            "label": "Image Crops",
+                            "description": "Local crops, stored on document",
+                            "propertyEditorUiAlias": "Umb.PropertyEditorUi.ImageCropsConfiguration"
+                        },
+                        {
+                            "alias": "ignoreUserStartNodes",
+                            "label": "Ignore User Start Nodes",
+                            "description": "Selecting this option allows a user to choose nodes that they normally dont have access to.",
+                            "propertyEditorUiAlias": "Umb.PropertyEditorUi.Toggle"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "propertyEditorUi",
+            "alias": "Limbo.PropertyEditorUi.MediaPicker",
+            "name": "Limbo Media Picker Property Editor UI",
+            "element": "/App_Plugins/Limbo.Umbraco.MediaPicker/limbo-media-picker.element.js",
+            "elementName": "limbo-media-picker",
+            "meta": {
+                "label": "Limbo Media Picker",
+                "propertyEditorSchemaAlias": "Limbo.Umbraco.MediaPicker",
+                "icon": "icon-picture",
+                "group": "media",
+                "supportsReadOnly": true
+            }
+        },
+        {
+            "type": "propertyEditorUi",
+            "alias": "Limbo.PropertyEditorUi.MediaPickerTypeConverter",
+            "name": "Limbo Media Picker Type Converter Property Editor UI",
+            "element": "/App_Plugins/Limbo.Umbraco.MediaPicker/limbo-media-picker-type-converter.element.js",
+            "elementName": "limbo-media-picker-type-converter",
+            "meta": {
+                "label": "Limbo Media Picker Type Converter",
+                "icon": "icon-brackets",
+                "group": "common"
+            }
+        }
+    ]
+}

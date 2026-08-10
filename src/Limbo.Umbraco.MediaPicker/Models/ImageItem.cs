@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
+// Newtonsoft.Json attributes replaced with System.Text.Json equivalents.
+using System.Text.Json.Serialization;
 using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Extensions;
@@ -17,25 +19,29 @@ public class ImageItem : MediaItem {
     /// <summary>
     /// The width of the media
     /// </summary>
-    [JsonProperty("width", Order = -450)]
+    [JsonPropertyName("width")]
+    [JsonPropertyOrder(-450)]
     public virtual int Width { get; }
 
     /// <summary>
     /// The height of the media
     /// </summary>
-    [JsonProperty("height", Order = -400)]
+    [JsonPropertyName("height")]
+    [JsonPropertyOrder(-400)]
     public virtual int Height { get; }
 
     /// <summary>
     /// The generated crop url
     /// </summary>
-    [JsonProperty("cropUrl", Order = -300)]
+    [JsonPropertyName("cropUrl")]
+    [JsonPropertyOrder(-300)]
     public virtual string CropUrl { get; }
 
     /// <summary>
     /// Gets the alternative text if an <c>altText</c> property exists on the media.
     /// </summary>
-    [JsonProperty("altText", Order = -250)]
+    [JsonPropertyName("altText")]
+    [JsonPropertyOrder(-250)]
     public string AlternativeText => Media.Value<string>("altText") ?? string.Empty;
     #endregion
 

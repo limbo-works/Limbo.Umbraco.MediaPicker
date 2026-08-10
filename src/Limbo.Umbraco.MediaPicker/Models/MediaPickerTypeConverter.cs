@@ -1,7 +1,7 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using Limbo.Umbraco.MediaPicker.Json.Newtonsoft;
-using Newtonsoft.Json;
+﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
+using System;
+using System.Text.Json.Serialization;
+using Limbo.Umbraco.MediaPicker.Json;
 
 namespace Limbo.Umbraco.MediaPicker.Models;
 
@@ -20,7 +20,6 @@ public class MediaPickerTypeConverter {
     /// Initializes a new instance with the specified <paramref name="type"/>.
     /// </summary>
     /// <param name="type">The alias of the CLR type of the type converter.</param>
-    [SetsRequiredMembers]
     public MediaPickerTypeConverter(string type) {
         Type = type;
     }

@@ -15,11 +15,11 @@
   </tr>
   <tr>
     <td><strong>Umbraco:</strong></td>
-    <td>Umbraco 13</td>
+    <td>Umbraco 17</td>
   </tr>
   <tr>
     <td><strong>Target Framework:</strong></td>
-    <td>.NET 8</td>
+    <td>.NET 10</td>
   </tr>
 </table>
 
@@ -31,19 +31,23 @@
 
 ## Installation
 
-### Umbraco 13
+### Umbraco 17
 
-The latest version of the package targets Umbraco 13 and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
+The latest version of the package targets Umbraco 17 and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.MediaPicker --version 13.0.1
+dotnet add package Limbo.Umbraco.MediaPicker --version 17.0.0
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.MediaPicker -Version 13.0.1
+Install-Package Limbo.Umbraco.MediaPicker -Version 17.0.0
 ```
+
+### Umbraco 13
+
+See the [**`v13/main`**](https://github.com/limbo-works/Limbo.Umbraco.MediaPicker/tree/v13/main) branch.
 
 ### Umbraco 10, 11 and 12
 
@@ -67,7 +71,8 @@ See our older [**Skybrud.ImagePicker**](https://github.com/skybrud/Skybrud.Image
 
 ## Documentation
 
-- [See the documentation at **packages.limbo.works**](https://packages.limbo.works/limbo.umbraco.mediapicker/docs/v13/)
+- [See the documentation at **packages.limbo.works**](https://packages.limbo.works/limbo.umbraco.mediapicker/docs/v17/)
+- [Upgrade recap: Umbraco 13 → 17](./documentation/upgrade-to-umbraco-17.md)
 
 
 

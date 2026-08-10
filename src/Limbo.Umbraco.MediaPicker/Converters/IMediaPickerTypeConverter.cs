@@ -1,6 +1,7 @@
-﻿using System;
+﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
+// Newtonsoft [JsonProperty] attributes removed - the management API controller now maps converters to a typed model.
+using System;
 using Limbo.Umbraco.MediaPicker.Models;
-using Newtonsoft.Json;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 
@@ -14,13 +15,11 @@ public interface IMediaPickerTypeConverter {
     /// <summary>
     /// Gets the alias of the converter.
     /// </summary>
-    [JsonProperty("alias")]
     public sealed string Alias => MediaPickerUtils.GetTypeAlias(GetType());
 
     /// <summary>
     /// Gets the name of the converter.
     /// </summary>
-    [JsonProperty("name")]
     string Name { get; }
 
     /// <summary>

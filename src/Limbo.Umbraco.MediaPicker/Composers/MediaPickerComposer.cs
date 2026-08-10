@@ -1,7 +1,8 @@
-﻿using Limbo.Umbraco.MediaPicker.Converters;
+﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
+// IManifestFilter no longer exists - the package manifest is now the static wwwroot/umbraco-package.json file.
+using Limbo.Umbraco.MediaPicker.Converters;
 using Limbo.Umbraco.MediaPicker.Extensions;
 using Limbo.Umbraco.MediaPicker.Factories;
-using Limbo.Umbraco.MediaPicker.Manifests;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Cms.Core.PropertyEditors;
@@ -27,10 +28,7 @@ public class ImagePickerComposer : IComposer {
             .WithCollectionBuilder<MediaPickerTypeConverterCollectionBuilder>()
             .Add(() => builder.TypeLoader.GetTypes<IMediaPickerTypeConverter>());
 
-        builder
-            .AddLimboMediaPickerPropertyIndexValueFactory<NoopPropertyIndexValueFactory>()
-            .ManifestFilters()
-            .Append<MediaPickerManifestFilter>();
+        builder.AddLimboMediaPickerPropertyIndexValueFactory<NoopPropertyIndexValueFactory>();
 
     }
 

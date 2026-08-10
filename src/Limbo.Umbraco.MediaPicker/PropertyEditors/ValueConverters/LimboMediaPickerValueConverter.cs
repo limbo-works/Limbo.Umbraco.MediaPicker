@@ -1,4 +1,6 @@
-﻿using System;
+﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
+// Constructor updated for Umbraco 17 - IPublishedSnapshotAccessor was replaced by IPublishedMediaCache.
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Limbo.Umbraco.MediaPicker.Converters;
@@ -22,11 +24,12 @@ public class LimboMediaPickerValueConverter : MediaPickerWithCropsValueConverter
 
     #region Constructors
 
-    public LimboMediaPickerValueConverter(IPublishedSnapshotAccessor publishedSnapshotAccessor,
-        IJsonSerializer jsonSerializer,
+    public LimboMediaPickerValueConverter(IPublishedMediaCache publishedMediaCache,
         IPublishedUrlProvider publishedUrlProvider,
         IPublishedValueFallback publishedValueFallback,
-        MediaPickerTypeConverterCollection converterCollection, IApiMediaWithCropsBuilder mediaWithCropsBuilder) : base(publishedSnapshotAccessor, publishedUrlProvider, publishedValueFallback, jsonSerializer, mediaWithCropsBuilder) {
+        IJsonSerializer jsonSerializer,
+        IApiMediaWithCropsBuilder apiMediaWithCropsBuilder,
+        MediaPickerTypeConverterCollection converterCollection) : base(publishedMediaCache, publishedUrlProvider, publishedValueFallback, jsonSerializer, apiMediaWithCropsBuilder) {
         _converterCollection = converterCollection;
     }
 
@@ -72,7 +75,7 @@ public class LimboMediaPickerValueConverter : MediaPickerWithCropsValueConverter
     public override Type GetPropertyValueType(IPublishedPropertyType propertyType) {
 
         // Call the base value converter if the config isn't the right type
-        if (propertyType.DataType.Configuration is not LimboMediaPickerConfiguration config) {
+        if (propertyType.DataType.ConfigurationAs<LimboMediaPickerConfiguration>() is not { } config) {
             return base.GetPropertyValueType(propertyType);
         }
 

@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
+// Newtonsoft.Json attributes replaced with System.Text.Json equivalents.
+using System.Text.Json.Serialization;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Extensions;
 
@@ -20,13 +22,15 @@ public class MediaItem {
     /// <summary>
     /// The media int id
     /// </summary>
-    [JsonProperty("id", Order = -500)]
+    [JsonPropertyName("id")]
+    [JsonPropertyOrder(-500)]
     public virtual int Id => Media.Id;
 
     /// <summary>
     /// The url for the media
     /// </summary>
-    [JsonProperty("url", Order = -350)]
+    [JsonPropertyName("url")]
+    [JsonPropertyOrder(-350)]
     public virtual string Url => Media.Url();
 
     #endregion
