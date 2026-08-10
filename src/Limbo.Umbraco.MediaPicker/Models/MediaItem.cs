@@ -17,6 +17,7 @@ public class MediaItem {
     /// Gets the IPublishedContent reference to the media node
     /// </summary>
     [JsonIgnore]
+    [Newtonsoft.Json.JsonIgnore]
     public IPublishedContent Media { get; }
 
     /// <summary>
@@ -24,6 +25,7 @@ public class MediaItem {
     /// </summary>
     [JsonPropertyName("id")]
     [JsonPropertyOrder(-500)]
+    [Newtonsoft.Json.JsonProperty("id", Order = -500)]
     public virtual int Id => Media.Id;
 
     /// <summary>
@@ -31,6 +33,7 @@ public class MediaItem {
     /// </summary>
     [JsonPropertyName("url")]
     [JsonPropertyOrder(-350)]
+    [Newtonsoft.Json.JsonProperty("url", Order = -350)]
     public virtual string Url => Media.Url();
 
     #endregion

@@ -21,6 +21,7 @@ public class ImageItem : MediaItem {
     /// </summary>
     [JsonPropertyName("width")]
     [JsonPropertyOrder(-450)]
+    [Newtonsoft.Json.JsonProperty("width", Order = -450)]
     public virtual int Width { get; }
 
     /// <summary>
@@ -28,6 +29,7 @@ public class ImageItem : MediaItem {
     /// </summary>
     [JsonPropertyName("height")]
     [JsonPropertyOrder(-400)]
+    [Newtonsoft.Json.JsonProperty("height", Order = -400)]
     public virtual int Height { get; }
 
     /// <summary>
@@ -35,6 +37,7 @@ public class ImageItem : MediaItem {
     /// </summary>
     [JsonPropertyName("cropUrl")]
     [JsonPropertyOrder(-300)]
+    [Newtonsoft.Json.JsonProperty("cropUrl", Order = -300)]
     public virtual string CropUrl { get; }
 
     /// <summary>
@@ -42,6 +45,7 @@ public class ImageItem : MediaItem {
     /// </summary>
     [JsonPropertyName("altText")]
     [JsonPropertyOrder(-250)]
+    [Newtonsoft.Json.JsonProperty("altText", Order = -250)]
     public string AlternativeText => Media.Value<string>("altText") ?? string.Empty;
     #endregion
 

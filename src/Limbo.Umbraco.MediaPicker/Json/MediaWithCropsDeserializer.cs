@@ -20,7 +20,7 @@ public class MediaWithCropsDeserializer {
         string? rawJson = value as string ?? value.ToString();
         if (string.IsNullOrWhiteSpace(rawJson)) yield break;
 
-        // Old comma seperated UDI format
+        // Old comma separated UDI format
         if (!rawJson.DetectIsJson()) {
             foreach (string udiStr in rawJson.Split(Constants.CharArrays.Comma)) {
                 if (UdiParser.TryParse(udiStr, out GuidUdi? udi)) {

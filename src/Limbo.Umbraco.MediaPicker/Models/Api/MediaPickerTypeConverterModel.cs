@@ -34,7 +34,7 @@ public class MediaPickerTypeConverterModel {
     public string? Assembly { get; init; }
 
     /// <summary>
-    /// Gets a description of the converter - eg. the name of the DLL declaring the converter.
+    /// Gets a description of the converter - e.g. the name of the DLL declaring the converter.
     /// </summary>
     [JsonPropertyName("description")]
     public string? Description { get; init; }

@@ -21,6 +21,7 @@ public class FileItem : MediaItem {
     /// </summary>
     [JsonPropertyName("bytes")]
     [JsonPropertyOrder(-450)]
+    [Newtonsoft.Json.JsonProperty("bytes", Order = -450)]
     public virtual int Bytes { get; }
     #endregion
 

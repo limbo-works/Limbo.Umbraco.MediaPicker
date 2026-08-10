@@ -10,15 +10,19 @@ namespace Limbo.Umbraco.MediaPicker.Models;
 internal class MediaWithCropsDto {
 
     [JsonPropertyName("key")]
+    [Newtonsoft.Json.JsonProperty("key")]
     public Guid Key { get; set; }
 
     [JsonPropertyName("mediaKey")]
+    [Newtonsoft.Json.JsonProperty("mediaKey")]
     public Guid MediaKey { get; set; }
 
     [JsonPropertyName("crops")]
+    [Newtonsoft.Json.JsonProperty("crops")]
     public IEnumerable<ImageCropperValue.ImageCropperCrop> Crops { get; set; } = null!;
 
     [JsonPropertyName("focalPoint")]
+    [Newtonsoft.Json.JsonProperty("focalPoint")]
     public ImageCropperValue.ImageCropperFocalPoint FocalPoint { get; set; } = null!;
 
 }
