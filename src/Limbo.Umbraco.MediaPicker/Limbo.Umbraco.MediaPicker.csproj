@@ -13,9 +13,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>17.0.0</VersionPrefix>
+    <VersionPrefix>17.0.0-alpha000</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
-    <VersionSuffix Condition="'$(Configuration)'=='Release'">alpha000</VersionSuffix>
     <Company>Limbo</Company>
     <Product>Limbo Media Picker</Product>
     <Authors>Anders Bjerner</Authors>
