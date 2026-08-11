@@ -1,11 +1,12 @@
-﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
-// IManifestFilter no longer exists - the package manifest is now the static wwwroot/umbraco-package.json file.
-using Limbo.Umbraco.MediaPicker.Converters;
+﻿using Limbo.Umbraco.MediaPicker.Converters;
 using Limbo.Umbraco.MediaPicker.Extensions;
 using Limbo.Umbraco.MediaPicker.Factories;
+using Limbo.Umbraco.MediaPicker.Manifests;
+using Microsoft.Extensions.DependencyInjection;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Cms.Core.PropertyEditors;
+using Umbraco.Cms.Infrastructure.Manifest;
 
 namespace Limbo.Umbraco.MediaPicker.Composers;
 
@@ -19,6 +20,8 @@ public class ImagePickerComposer : IComposer {
     /// </summary>
     /// <param name="builder">Umbraco's own injected builder that runs on startup.</param>
     public void Compose(IUmbracoBuilder builder) {
+
+        builder.Services.AddSingleton<IPackageManifestReader, MediaPickerManifestReader>();
 
         builder
             .DataValueReferenceFactories()

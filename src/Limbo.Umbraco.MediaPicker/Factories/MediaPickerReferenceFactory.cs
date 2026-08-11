@@ -25,7 +25,7 @@ public class MediaPickerReferenceFactory : IDataValueReferenceFactory, IDataValu
 
     /// <inheritdoc />
     public bool IsForEditor(IDataEditor? dataEditor) {
-        return dataEditor != null && dataEditor.Alias.InvariantEquals(LimboMediaPickerEditor.EditorAlias);
+        return dataEditor != null && dataEditor.Alias.InvariantEquals(LimboMediaPickerPropertyEditor.EditorAlias);
     }
 
     IEnumerable<UmbracoEntityReference> IDataValueReference.GetReferences(object? value) {

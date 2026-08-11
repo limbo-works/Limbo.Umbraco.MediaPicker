@@ -8,11 +8,13 @@ using Umbraco.Cms.Core.PropertyEditors;
 namespace Limbo.Umbraco.MediaPicker.PropertyEditors;
 
 /// <summary>
-/// Configuration editor for the <see cref="LimboMediaPickerEditor"/> property editor. In Umbraco 17 all UI concerns
+/// Configuration editor for the <see cref="LimboMediaPickerPropertyEditor"/> property editor. In Umbraco 17 all UI concerns
 /// (labels, descriptions and views for the individual fields) are declared client-side in <c>umbraco-package.json</c>,
 /// so this class only binds the strongly typed <see cref="LimboMediaPickerConfiguration"/>.
 /// </summary>
 public class LimboMediaPickerConfigurationEditor : ConfigurationEditor<LimboMediaPickerConfiguration> {
+
+    public const string EditorUiAlias = "Limbo.PropertyEditorUi.MediaPickerTypeConverter";
 
     public LimboMediaPickerConfigurationEditor(IIOHelper ioHelper) : base(ioHelper) { }
 

@@ -12,7 +12,7 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors;
 /// </summary>
 /// <seealso cref="MediaPicker3PropertyEditor" />
 [DataEditor(EditorAlias, ValueType = ValueTypes.Json, ValueEditorIsReusable = true)]
-public class LimboMediaPickerEditor : MediaPicker3PropertyEditor {
+public class LimboMediaPickerPropertyEditor : MediaPicker3PropertyEditor {
 
     private readonly IIOHelper _ioHelper;
 
@@ -37,7 +37,7 @@ public class LimboMediaPickerEditor : MediaPicker3PropertyEditor {
 
     #region Constructors
 
-    public LimboMediaPickerEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper, [FromKeyedServices(MediaPickerPackage.Alias)] IPropertyIndexValueFactory propertyIndexValueFactory) : base(dataValueEditorFactory, ioHelper) {
+    public LimboMediaPickerPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper, [FromKeyedServices(MediaPickerPackage.Alias)] IPropertyIndexValueFactory propertyIndexValueFactory) : base(dataValueEditorFactory, ioHelper) {
         _ioHelper = ioHelper;
         PropertyIndexValueFactory = propertyIndexValueFactory;
         SupportsReadOnly = true;

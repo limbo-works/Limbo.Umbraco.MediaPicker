@@ -43,7 +43,7 @@ public class LimboMediaPickerValueConverter : MediaPickerWithCropsValueConverter
     /// <param name="propertyType">The property type.</param>
     /// <returns><c>true</c> if this class is the value converter for <paramref name="propertyType"/>; otherwise <c>false</c>.</returns>
     public override bool IsConverter(IPublishedPropertyType propertyType) {
-        return propertyType.EditorAlias == LimboMediaPickerEditor.EditorAlias;
+        return propertyType.EditorAlias == LimboMediaPickerPropertyEditor.EditorAlias;
     }
 
     /// <summary>
