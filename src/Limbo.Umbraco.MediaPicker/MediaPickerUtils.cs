@@ -1,6 +1,4 @@
-﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
-// PrependLinkToDescription removed - field descriptions are now declared client-side in umbraco-package.json.
-using System;
+﻿using System;
 using System.Linq;
 using Skybrud.Essentials.Exceptions;
 using Skybrud.Essentials.Strings.Extensions;

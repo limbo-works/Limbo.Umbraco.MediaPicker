@@ -1,6 +1,4 @@
-﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
-// Newtonsoft [JsonProperty] attributes removed - the management API controller now maps converters to a typed model.
-using System;
+﻿using System;
 using Limbo.Umbraco.MediaPicker.Models;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;

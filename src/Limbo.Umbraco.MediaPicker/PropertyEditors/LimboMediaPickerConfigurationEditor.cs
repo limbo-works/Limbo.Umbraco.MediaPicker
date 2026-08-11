@@ -1,5 +1,4 @@
-﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
-using Limbo.Umbraco.MediaPicker.Models;
+﻿using Limbo.Umbraco.MediaPicker.Models;
 using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.PropertyEditors;
 
