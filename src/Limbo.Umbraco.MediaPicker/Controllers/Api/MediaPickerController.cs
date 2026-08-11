@@ -1,28 +1,30 @@
-﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
-// Rewritten from UmbracoAuthorizedApiController (removed in Umbraco 14) to a Management API controller.
-// Route: GET /umbraco/management/api/v1/limbo/media-picker/converters
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Asp.Versioning;
+using Limbo.Umbraco.MediaPicker.Api;
 using Limbo.Umbraco.MediaPicker.Converters;
 using Limbo.Umbraco.MediaPicker.Models.Api;
-using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Skybrud.Essentials.Reflection.Extensions;
+using Umbraco.Cms.Api.Common.Attributes;
 using Umbraco.Cms.Api.Management.Controllers;
 using Umbraco.Cms.Api.Management.Routing;
+using Umbraco.Cms.Web.Common.Authorization;
 
 namespace Limbo.Umbraco.MediaPicker.Controllers.Api;
 
 /// <summary>
 /// Management API controller used by the backoffice UI of the package.
 /// </summary>
-// [CHANGE: QA review fix] Related: wwwroot/limbo-media-picker.element.js, wwwroot/limbo-media-picker-type-converter.element.js, wwwroot/umbraco-package.json
-// Explicit API version so the "v1" URL segment always resolves (matches the documented Management API controller pattern).
+[ApiController]
+[VersionedApiBackOfficeRoute(MediaPickerApiConstants.Route)]
+[Authorize(Policy = AuthorizationPolicies.SectionAccessContent)]
+[MapToApi(MediaPickerApiConstants.Alias)]
 [ApiVersion("1.0")]
-[ApiExplorerSettings(GroupName = "Limbo Media Picker")]
-[VersionedApiBackOfficeRoute("limbo/media-picker")]
+[ApiExplorerSettings(GroupName = MediaPickerApiConstants.GroupName)]
 public class MediaPickerController : ManagementApiControllerBase {
 
     private static readonly string[] _versionSeparator = [", Version"];
@@ -70,7 +72,7 @@ public class MediaPickerController : ManagementApiControllerBase {
             Icon = icon,
             Name = name,
             Description = $"{type.AssemblyQualifiedName?.Split(_versionSeparator, StringSplitOptions.None)[0]}.dll",
-            Obsolete = type.IsObsolete(out ObsoleteAttribute? obsolete) ? new MediaPickerTypeConverterObsoleteModel { Message = obsolete!.Message } : null
+            Obsolete = type.IsObsolete(out ObsoleteAttribute? obsolete) ? new MediaPickerTypeConverterObsoleteModel { Message = obsolete.Message } : null
         };
 
     }

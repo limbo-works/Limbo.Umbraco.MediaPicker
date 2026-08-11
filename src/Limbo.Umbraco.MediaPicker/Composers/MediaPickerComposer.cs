@@ -1,4 +1,5 @@
-﻿using Limbo.Umbraco.MediaPicker.Converters;
+﻿using Limbo.Umbraco.MediaPicker.Api;
+using Limbo.Umbraco.MediaPicker.Converters;
 using Limbo.Umbraco.MediaPicker.Extensions;
 using Limbo.Umbraco.MediaPicker.Factories;
 using Limbo.Umbraco.MediaPicker.Manifests;
@@ -32,6 +33,8 @@ public class ImagePickerComposer : IComposer {
             .Add(() => builder.TypeLoader.GetTypes<IMediaPickerTypeConverter>());
 
         builder.AddLimboMediaPickerPropertyIndexValueFactory<NoopPropertyIndexValueFactory>();
+
+        builder.Services.ConfigureOptions<MediaPickerSwaggerGenOptions>();
 
     }
 
