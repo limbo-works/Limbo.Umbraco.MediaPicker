@@ -1,6 +1,4 @@
-﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
-// DataContract/DataMember replaced with System.Text.Json attributes.
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Umbraco.Cms.Core.PropertyEditors.ValueConverters;

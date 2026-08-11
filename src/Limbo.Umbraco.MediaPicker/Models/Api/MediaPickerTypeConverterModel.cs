@@ -1,6 +1,4 @@
-﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
-// New typed response model replacing the Newtonsoft JObject previously returned by the API controller.
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Limbo.Umbraco.MediaPicker.Models.Api;
 
@@ -44,18 +42,5 @@ public class MediaPickerTypeConverterModel {
     /// </summary>
     [JsonPropertyName("obsolete")]
     public MediaPickerTypeConverterObsoleteModel? Obsolete { get; init; }
-
-}
-
-/// <summary>
-/// Response model describing the obsolete status of a type converter.
-/// </summary>
-public class MediaPickerTypeConverterObsoleteModel {
-
-    /// <summary>
-    /// Gets the obsolete message, if any.
-    /// </summary>
-    [JsonPropertyName("message")]
-    public string? Message { get; init; }
 
 }

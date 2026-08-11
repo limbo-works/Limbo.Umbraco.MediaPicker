@@ -1,11 +1,7 @@
-﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
-// Newtonsoft.Json attributes replaced with System.Text.Json equivalents.
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Extensions;
-
-// ReSharper disable UnusedParameter.Local
 
 namespace Limbo.Umbraco.MediaPicker.Models;
 

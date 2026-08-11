@@ -1,5 +1,4 @@
-﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
-using System;
+﻿using System;
 using System.Text.Json.Serialization;
 using Limbo.Umbraco.MediaPicker.Json;
 

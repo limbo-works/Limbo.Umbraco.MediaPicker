@@ -1,6 +1,4 @@
-﻿// [CHANGE: Umbraco 13→17 upgrade] Related: all files under src/, see documentation/upgrade-to-umbraco-17.md
-// Constructor updated for Umbraco 17 - IPublishedSnapshotAccessor was replaced by IPublishedMediaCache.
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Limbo.Umbraco.MediaPicker.Converters;
