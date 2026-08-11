@@ -45,17 +45,11 @@ or the NuGet Package Manager:
 Install-Package Limbo.Umbraco.MediaPicker -Version 17.0.0
 ```
 
-### Umbraco 13
+### Other versions of Umbraco
 
-See the [**`v13/main`**](https://github.com/limbo-works/Limbo.Umbraco.MediaPicker/tree/v13/main) branch.
+- [**`v13/main`**](https://github.com/limbo-works/Limbo.Umbraco.MediaPicker/tree/v13/main) Umbraco 13
+- ~~[**`v1/main`**](https://github.com/limbo-works/Limbo.Umbraco.MediaPicker/tree/v1/main) Umbraco 10, 11 and 12~~ <sub title="Umbraco 10, 11 and 12 have reached end-of-life"><sup>(EOL)</sup></sub>
 
-### Umbraco 10, 11 and 12
-
-See the [**`v1.x`**](https://github.com/limbo-works/Limbo.Umbraco.MediaPicker/tree/v1/main) branch.
-
-### Umbraco 7 and 8
-
-See our older [**Skybrud.ImagePicker**](https://github.com/skybrud/Skybrud.ImagePicker) package.
 
 
 
