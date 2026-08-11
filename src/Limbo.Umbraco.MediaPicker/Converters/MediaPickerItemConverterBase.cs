@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Limbo.Umbraco.MediaPicker.Models;
 using Skybrud.Essentials.Collections;
-using Skybrud.Essentials.Collections.Extensions;
+using Skybrud.Essentials.Collections.Enumerables.Extensions;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 

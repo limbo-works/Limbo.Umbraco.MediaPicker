@@ -47,7 +47,7 @@
   <!-- [CHANGE: QA review fix] Related: Json/MediaPickerTypeConverterJsonConverter.cs, wwwroot/limbo-media-picker-type-converter.element.js -->
   <!-- The upper bound must stay above every 17.x release - "17.9.9" would have excluded 17.10.0 and up (17.10 > 17.9.9). -->
   <ItemGroup>
-    <PackageReference Include="Skybrud.Essentials" Version="1.1.61" />
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.68" />
     <PackageReference Include="Umbraco.Cms.Core" Version="[17.0.0,17.999)" NoWarn="NU1902" />
     <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[17.0.0,17.999)" NoWarn="NU1902" />
     <PackageReference Include="Umbraco.Cms.Api.Management" Version="[17.0.0,17.999)" NoWarn="NU1902" />
