@@ -35,7 +35,7 @@ public class MediaPickerReferenceFactory : IDataValueReferenceFactory, IDataValu
         var dtos = MediaWithCropsDeserializer.Deserialize(_jsonSerializer, str);
 
         return dtos
-            .Select(dto => new UmbracoEntityReference(new GuidUdi(Constants.UdiEntityType.Media, dto.MediaKey)))
+            .Select(dto => new UmbracoEntityReference(new GuidUdi(global::Umbraco.Cms.Core.Constants.UdiEntityType.Media, dto.MediaKey)))
             .ToList();
 
     }

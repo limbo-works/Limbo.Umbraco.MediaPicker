@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Extensions;
 
@@ -54,8 +53,8 @@ public class ImageItem : MediaItem {
     /// <param name="config">The media picker data type configuration.</param>
     public ImageItem(IPublishedContent media, LimboMediaPickerConfiguration config) : base(media) {
 
-        int width = media.Value<int>(Constants.Conventions.Media.Width);
-        int height = media.Value<int>(Constants.Conventions.Media.Height);
+        int width = media.Value<int>(global::Umbraco.Cms.Core.Constants.Conventions.Media.Width);
+        int height = media.Value<int>(global::Umbraco.Cms.Core.Constants.Conventions.Media.Height);
 
         Width = width;
         Height = height;

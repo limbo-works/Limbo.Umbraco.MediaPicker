@@ -10,7 +10,7 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors;
 /// Extends the MediaPicker3 property editor with our additional config options.
 /// </summary>
 /// <seealso cref="MediaPicker3PropertyEditor" />
-[DataEditor(EditorAlias, ValueType = ValueTypes.Json, ValueEditorIsReusable = true)]
+[DataEditor(EditorAlias, ValueType = EditorValueType, ValueEditorIsReusable = true)]
 public class LimboMediaPickerPropertyEditor : MediaPicker3PropertyEditor {
 
     private readonly IIOHelper _ioHelper;
@@ -30,7 +30,22 @@ public class LimboMediaPickerPropertyEditor : MediaPicker3PropertyEditor {
     /// <summary>
     /// Gets the alias of the property editor UI shown in the backoffice.
     /// </summary>
-    public const string EditorUiAlias = "Limbo.PropertyEditorUi.MediaPicker";
+    public const string EditorUiAlias = "Limbo.Umbraco.MediaPicker.PropertyEditorUi";
+
+    /// <summary>
+    /// Gets the icon alias of the property editor.
+    /// </summary>
+    public const string EditorIcon = "icon-picture";
+
+    /// <summary>
+    /// Gets the group of the property editor.
+    /// </summary>
+    public const string EditorGroup = "Limbo";
+
+    /// <summary>
+    /// Gets the value type of the property editor.
+    /// </summary>
+    public const string EditorValueType = ValueTypes.Json;
 
     #endregion
 

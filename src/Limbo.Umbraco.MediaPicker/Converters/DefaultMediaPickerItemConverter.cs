@@ -1,7 +1,6 @@
 ﻿using System;
 using Limbo.Umbraco.MediaPicker.Models;
 using Skybrud.Essentials.Strings.Extensions;
-using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 
@@ -31,8 +30,8 @@ public class DefaultMediaPickerItemConverter : MediaPickerItemConverterBase {
 
         if (filter.Length == 1) {
             return filter[0] switch {
-                Constants.Conventions.MediaTypes.Image => typeof(ImageWithCropsItem),
-                Constants.Conventions.MediaTypes.File => typeof(MediaWithCropsItem),
+                global::Umbraco.Cms.Core.Constants.Conventions.MediaTypes.Image => typeof(ImageWithCropsItem),
+                global::Umbraco.Cms.Core.Constants.Conventions.MediaTypes.File => typeof(MediaWithCropsItem),
                 _ => typeof(MediaWithCropsItem)
             };
         }
@@ -52,8 +51,8 @@ public class DefaultMediaPickerItemConverter : MediaPickerItemConverterBase {
     protected override object? ConvertItem(IPublishedElement owner, IPublishedPropertyType propertyType, MediaWithCrops source, LimboMediaPickerConfiguration config) {
         return source.ContentType.Alias switch {
             null => (object?) null,
-            Constants.Conventions.MediaTypes.Image => new ImageWithCropsItem(source, config),
-            Constants.Conventions.MediaTypes.File => new MediaWithCropsItem(source),
+            global::Umbraco.Cms.Core.Constants.Conventions.MediaTypes.Image => new ImageWithCropsItem(source, config),
+            global::Umbraco.Cms.Core.Constants.Conventions.MediaTypes.File => new MediaWithCropsItem(source),
             _ => new MediaWithCropsItem(source)
         };
     }

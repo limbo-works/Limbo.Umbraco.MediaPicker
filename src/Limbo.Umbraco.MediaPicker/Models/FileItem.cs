@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Extensions;
 
@@ -28,7 +27,7 @@ public class FileItem : MediaItem {
     /// </summary>
     /// <param name="media">An instance of <see cref="IPublishedContent"/> representing the media.</param>
     public FileItem(IPublishedContent media) : base(media) {
-        Bytes = media.Value<int>(Constants.Conventions.Media.Bytes);
+        Bytes = media.Value<int>(global::Umbraco.Cms.Core.Constants.Conventions.Media.Bytes);
     }
 
     #endregion

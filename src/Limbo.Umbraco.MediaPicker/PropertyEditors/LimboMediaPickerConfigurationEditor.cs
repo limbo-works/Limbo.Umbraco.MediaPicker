@@ -13,8 +13,6 @@ namespace Limbo.Umbraco.MediaPicker.PropertyEditors;
 /// </summary>
 public class LimboMediaPickerConfigurationEditor : ConfigurationEditor<LimboMediaPickerConfiguration> {
 
-    public const string EditorUiAlias = "Limbo.PropertyEditorUi.MediaPickerTypeConverter";
-
     public LimboMediaPickerConfigurationEditor(IIOHelper ioHelper) : base(ioHelper) { }
 
 }

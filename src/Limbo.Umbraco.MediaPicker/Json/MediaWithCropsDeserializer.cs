@@ -22,7 +22,7 @@ public class MediaWithCropsDeserializer {
 
         // Old comma separated UDI format
         if (!rawJson.DetectIsJson()) {
-            foreach (string udiStr in rawJson.Split(Constants.CharArrays.Comma)) {
+            foreach (string udiStr in rawJson.Split(global::Umbraco.Cms.Core.Constants.CharArrays.Comma)) {
                 if (UdiParser.TryParse(udiStr, out GuidUdi? udi)) {
                     yield return new MediaWithCropsDto {
                         Key = Guid.NewGuid(),

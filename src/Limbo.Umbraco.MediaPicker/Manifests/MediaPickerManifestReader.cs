@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Limbo.Umbraco.MediaPicker.Constants;
 using Limbo.Umbraco.MediaPicker.PropertyEditors;
-using Skybrud.Essentials.Security.Extensions;
 using Umbraco.Cms.Core.Manifest;
 using Umbraco.Cms.Infrastructure.Manifest;
+
+using static Limbo.Umbraco.MediaPicker.MediaPickerPackage;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -11,16 +13,14 @@ namespace Limbo.Umbraco.MediaPicker.Manifests;
 
 public class MediaPickerManifestReader : IPackageManifestReader {
 
-    protected string CacheBuster { get; } = MediaPickerPackage.InformationalVersion.ToMd5Hash();
-
     public Task<IEnumerable<PackageManifest>> ReadPackageManifestsAsync() {
 
         List<PackageManifest> list = [
             new() {
                 AllowTelemetry = true,
-                Id = MediaPickerPackage.Alias,
-                Name = MediaPickerPackage.Name,
-                Version = MediaPickerPackage.InformationalVersion,
+                Id = Alias,
+                Name = Name,
+                Version = InformationalVersion,
                 AllowPublicAccess = false,
                 Extensions = [
                     GetPropertyEditorSchema(),
@@ -36,19 +36,19 @@ public class MediaPickerManifestReader : IPackageManifestReader {
     }
 
     private static object GetPropertyEditorSchema() {
-        return new        {
+        return new {
             type = "propertyEditorSchema",
-            name = "Limbo Media Picker Schema",
-            alias = LimboMediaPickerPropertyEditor.EditorAlias,
+            name = $"{Name}: Property Editor Schema",
+            alias = MediaPickerPropertyEditorSchemaAliases.MediaPicker,
             meta = new            {
-                defaultPropertyEditorUiAlias = LimboMediaPickerPropertyEditor.EditorUiAlias,
+                defaultPropertyEditorUiAlias = MediaPickerPropertyEditorUiAliases.MediaPicker,
                 settings = new                {
                     properties = new object[] {
                         new {
                             alias = "typeConverter",
                             label = "Type converter",
                             description = "Select a type converter, which will be used for converting the default media picker value.\n\n[See the documentation →](https://packages.limbo.works/e7b725c2)",
-                            propertyEditorUiAlias = "Limbo.PropertyEditorUi.MediaPickerTypeConverter"
+                            propertyEditorUiAlias = MediaPickerPropertyEditorUiAliases.TypeConverter
                         },
                         new {
                             alias = "filter",
@@ -111,15 +111,15 @@ public class MediaPickerManifestReader : IPackageManifestReader {
     private object GetMediaPickerPropertyEditorUi() {
         return new {
             type = "propertyEditorUi",
-            alias = LimboMediaPickerPropertyEditor.EditorUiAlias,
-            name = "Limbo Media Picker Property Editor UI",
-            element = $"/App_Plugins/{MediaPickerPackage.Alias}/limbo-media-picker.element.js?v={CacheBuster}",
+            alias = MediaPickerPropertyEditorUiAliases.MediaPicker,
+            name = $"{Name}: Property Editor UI",
+            element = $"/App_Plugins/{Alias}/limbo-media-picker.element.js",
             elementName = "limbo-media-picker",
             meta = new {
-                label = "Limbo Media Picker",
-                propertyEditorSchemaAlias = LimboMediaPickerPropertyEditor.EditorAlias,
-                icon = "icon-picture",
-                group = "media",
+                label = LimboMediaPickerPropertyEditor.EditorName,
+                propertyEditorSchemaAlias = MediaPickerPropertyEditorSchemaAliases.MediaPicker,
+                icon = LimboMediaPickerPropertyEditor.EditorIcon,
+                group = LimboMediaPickerPropertyEditor.EditorGroup,
                 supportsReadOnly = true
             }
         };
@@ -128,15 +128,15 @@ public class MediaPickerManifestReader : IPackageManifestReader {
     private object GetMediaPickerTypeConverterPropertyEditorUi() {
         return new {
             type = "propertyEditorUi",
-            alias = LimboMediaPickerConfigurationEditor.EditorUiAlias,
-            name = "Limbo Media Picker Type Converter Property Editor UI",
-            element = $"/App_Plugins/{MediaPickerPackage.Alias}/limbo-media-picker-type-converter.element.js?v={CacheBuster}",
+            alias = MediaPickerPropertyEditorUiAliases.TypeConverter,
+            name = $"{Name}: Type Converter Property Editor UI",
+            element = $"/App_Plugins/{Alias}/limbo-media-picker-type-converter.element.js",
             elementName = "limbo-media-picker-type-converter",
             meta = new {
                 label = "Limbo Media Picker Type Converter",
-                propertyEditorSchemaAlias = LimboMediaPickerPropertyEditor.EditorAlias,
+                //propertyEditorSchemaAlias = MediaPickerPropertyEditorSchemaAliases.MediaPicker,
                 icon = "icon-picture",
-                group = "media"
+                group = "Limbo"
             }
         };
     }
