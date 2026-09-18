@@ -36,13 +36,13 @@
 The latest version of the package targets Umbraco 17 and is available via [**NuGet**][NuGetPackage]. To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.MediaPicker --version 17.0.0
+dotnet add package Limbo.Umbraco.MediaPicker --version 17.0.0-alpha002
 ```
 
 or the NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.MediaPicker -Version 17.0.0
+Install-Package Limbo.Umbraco.MediaPicker -Version 17.0.0-alpha002
 ```
 
 ### Other versions of Umbraco
